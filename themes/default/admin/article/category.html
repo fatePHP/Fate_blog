@@ -1,0 +1,241 @@
+<div id="wpbody">
+
+<div id="wpbody-content" aria-label="主内容" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									概述								</a>
+							</li>
+						
+							<li id="tab-link-adding-terms">
+								<a href="#tab-panel-adding-terms" aria-controls="tab-panel-adding-terms">
+									分类目录的添加								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>更多信息：</strong></p><p><a href="http://codex.wordpress.org/zh-cn:%E6%96%87%E7%AB%A0_%E5%88%86%E7%B1%BB%E7%9B%AE%E5%BD%95%E9%A1%B5%E9%9D%A2" target="_blank">关于分类目录的中文文档</a></p><p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>您可以使用分类目录来给站点分区、按照主题组织相关的文章。默认的目录是“未分类”，您可在<a href="options-writing.php">撰写选项</a>中修改它。</p><p>分类目录和标签的区别是什么呢？通常，标签是临时安排的一些关键词，用来标记文章中的关键信息（名字，题目等），也许其它文章也会拥有这个标签。而分类则是事先决定了的。若将您的站点比做一本书，那么分类目录就是书的目录，标签则是书前所列出的术语。</p>							</div>
+						
+							<div id="tab-panel-adding-terms" class="help-tab-content">
+								<p>当您创建一个新分类目录时，您须填写下列栏目：</p><ul><li><strong>名称</strong> - 标签在网站上的显示名称。</li><li><strong>别名</strong> - “别名“是URL友好的另外一个叫法。它通常为小写并且只能包含字母，数字和连字符。</li><li><strong>父级</strong> - 分类目录和标签不同，它可以有层级关系。您可以有一个音乐的分类目录，目录下面可以有叫做“流行”或者“古典”的子目录。要实现这样的层级关系，请先创建子分类目录，然后在“父级”处选择它所属的父级分类目录。</li><li><strong>描述</strong> - “描述”只会在一部分主题中显示。</li></ul><p>在“显示选项”中，您可以调整每页显示的标签数量、隐藏或显示表格中的一些栏目。</p>							</div>
+											</div>
+				</div>
+			</div>
+				<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="“显示选项”选项卡">
+		<form id="adv-settings" action="" method="post">
+					<h5>显示下列项目</h5>
+					<div class="metabox-prefs">
+				<label for="description-hide"><input class="hide-column-tog" name="description-hide" type="checkbox" id="description-hide" value="description" checked='checked' />图像描述</label>
+<label for="slug-hide"><input class="hide-column-tog" name="slug-hide" type="checkbox" id="slug-hide" value="slug" checked='checked' />别名</label>
+<label for="posts-hide"><input class="hide-column-tog" name="posts-hide" type="checkbox" id="posts-hide" value="posts" checked='checked' />总数</label>
+				<br class="clear" />
+			</div>
+				<div class="screen-options">
+							<input type="number" step="1" min="1" max="999" class="screen-per-page" name="wp_screen_options[value]"
+					id="edit_category_per_page" maxlength="3"
+					value="20" />
+				<label for="edit_category_per_page">
+					分类目录				</label>
+			<input type="submit" name="screen-options-apply" id="screen-options-apply" class="button" value="应用"  />			<input type='hidden' name='wp_screen_options[option]' value='edit_category_per_page' />
+		</div>
+				<div><input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="6127c3fb03" /></div>
+		</form>
+		</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
+			</div>
+					<div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#screen-options-wrap" id="show-settings-link" class="show-settings" aria-controls="screen-options-wrap" aria-expanded="false">显示选项</a>
+			</div>
+				</div>
+		
+<div class="wrap nosubsub">
+<h2>分类目录</h2>
+
+<div id="ajax-response"></div>
+
+<form class="search-form" action="" method="get">
+<input type="hidden" name="taxonomy" value="category" />
+<input type="hidden" name="post_type" value="post" />
+
+<p class="search-box">
+	<label class="screen-reader-text" for="tag-search-input">搜索分类目录:</label>
+	<input type="search" id="tag-search-input" name="s" value="" />
+	<input type="submit" name="" id="search-submit" class="button" value="搜索分类目录"  /></p>
+
+</form>
+<br class="clear" />
+
+<div id="col-container">
+
+<div id="col-right">
+<div class="col-wrap">
+<form id="posts-filter" action="" method="post">
+<input type="hidden" name="taxonomy" value="category" />
+<input type="hidden" name="post_type" value="post" />
+
+<input type="hidden" id="_wpnonce" name="_wpnonce" value="fc6d69978e" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit-tags.php?taxonomy=category" />	<div class="tablenav top">
+
+		<div class="alignleft actions bulkactions">
+			<label for='bulk-action-selector-top' class='screen-reader-text'>选择批量操作</label><select name='action' id='bulk-action-selector-top'>
+<option value='-1' selected='selected'>批量操作</option>
+	<option value='delete'>删除</option>
+</select>
+<input type="submit" name="" id="doaction" class="button action" value="应用"  />
+		</div>
+<div class='tablenav-pages one-page'><span class="displaying-num">1个项目</span>
+<span class='pagination-links'><a class='first-page disabled' title='前往第一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category'>&laquo;</a>
+<a class='prev-page disabled' title='前往上一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&lsaquo;</a>
+<span class="paging-input">第<label for="current-page-selector" class="screen-reader-text">选择页面</label><input class='current-page' id='current-page-selector' title='当前页面' type='text' name='paged' value='1' size='1' />页，共<span class='total-pages'>1</span>页</span>
+<a class='next-page disabled' title='前往下一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&rsaquo;</a>
+<a class='last-page disabled' title='前往最后一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&raquo;</a></span></div>
+		<br class="clear" />
+	</div>
+<table class="wp-list-table widefat fixed tags">
+	<thead>
+	<tr>
+		<th scope='col' id='cb' class='manage-column column-cb check-column'  style=""><label class="screen-reader-text" for="cb-select-all-1">全选</label><input id="cb-select-all-1" type="checkbox" /></th><th scope='col' id='name' class='manage-column column-name sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=name&#038;order=asc"><span>名称</span><span class="sorting-indicator"></span></a></th><th scope='col' id='description' class='manage-column column-description sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=description&#038;order=asc"><span>图像描述</span><span class="sorting-indicator"></span></a></th><th scope='col' id='slug' class='manage-column column-slug sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=slug&#038;order=asc"><span>别名</span><span class="sorting-indicator"></span></a></th><th scope='col' id='posts' class='manage-column column-posts num sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=count&#038;order=asc"><span>总数</span><span class="sorting-indicator"></span></a></th>	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<th scope='col'  class='manage-column column-cb check-column'  style=""><label class="screen-reader-text" for="cb-select-all-2">全选</label><input id="cb-select-all-2" type="checkbox" /></th><th scope='col'  class='manage-column column-name sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=name&#038;order=asc"><span>名称</span><span class="sorting-indicator"></span></a></th><th scope='col'  class='manage-column column-description sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=description&#038;order=asc"><span>图像描述</span><span class="sorting-indicator"></span></a></th><th scope='col'  class='manage-column column-slug sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=slug&#038;order=asc"><span>别名</span><span class="sorting-indicator"></span></a></th><th scope='col'  class='manage-column column-posts num sortable desc'  style=""><a href="http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;orderby=count&#038;order=asc"><span>总数</span><span class="sorting-indicator"></span></a></th>	</tr>
+	</tfoot>
+
+	<tbody id="the-list" data-wp-lists='list:tag'>
+			<tr id="tag-1" class="alternate"><th scope="row" class="check-column">&nbsp;</th><td class='name column-name'><strong><a class="row-title" href="http://localhost/wordpress/wp-admin/edit-tags.php?action=edit&#038;taxonomy=category&#038;tag_ID=1&#038;post_type=post" title="编辑“未分类”">未分类</a></strong><br /><div class="row-actions"><span class='edit'><a href="http://localhost/wordpress/wp-admin/edit-tags.php?action=edit&#038;taxonomy=category&#038;tag_ID=1&#038;post_type=post">编辑</a> | </span><span class='inline hide-if-no-js'><a href="#" class="editinline">快速编辑</a> | </span><span class='view'><a href="http://localhost/wordpress/?cat=1">查看</a></span></div><div class="hidden" id="inline_1"><div class="name">未分类</div><div class="slug">uncategorized</div><div class="parent">0</div></div></td><td class='description column-description'></td><td class='slug column-slug'>uncategorized</td><td class='posts column-posts'><a href='edit.php?category_name=uncategorized'>1</a></td></tr>	</tbody>
+</table>
+	<div class="tablenav bottom">
+
+		<div class="alignleft actions bulkactions">
+			<label for='bulk-action-selector-bottom' class='screen-reader-text'>选择批量操作</label><select name='action2' id='bulk-action-selector-bottom'>
+<option value='-1' selected='selected'>批量操作</option>
+	<option value='delete'>删除</option>
+</select>
+<input type="submit" name="" id="doaction2" class="button action" value="应用"  />
+		</div>
+<div class='tablenav-pages one-page'><span class="displaying-num">1个项目</span>
+<span class='pagination-links'><a class='first-page disabled' title='前往第一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category'>&laquo;</a>
+<a class='prev-page disabled' title='前往上一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&lsaquo;</a>
+<span class="paging-input">第1页，共<span class='total-pages'>1</span>页</span>
+<a class='next-page disabled' title='前往下一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&rsaquo;</a>
+<a class='last-page disabled' title='前往最后一页' href='http://localhost/wordpress/wp-admin/edit-tags.php?taxonomy=category&#038;paged=1'>&raquo;</a></span></div>
+		<br class="clear" />
+	</div>
+
+<br class="clear" />
+</form>
+
+<div class="form-wrap">
+<p>
+	<strong>注意：</strong><br />删除分类目录不会把该分类目录下的文章一并删除。文章会被归入“<strong>未分类</strong>”分类目录。</p>
+<p>分类目录可以有选择的转换成标签，请使用<a href="import.php">分类目录到标签转换器</a>。</p>
+</div>
+
+</div>
+</div><!-- /col-right -->
+
+<div id="col-left">
+<div class="col-wrap">
+
+
+<div class="form-wrap">
+<h3>添加新分类目录</h3>
+<form id="addtag" method="post" action="edit-tags.php" class="validate">
+<input type="hidden" name="action" value="add-tag" />
+<input type="hidden" name="screen" value="edit-category" />
+<input type="hidden" name="taxonomy" value="category" />
+<input type="hidden" name="post_type" value="post" />
+<input type="hidden" id="_wpnonce_add-tag" name="_wpnonce_add-tag" value="000f99e021" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/edit-tags.php?taxonomy=category" />
+<div class="form-field form-required">
+	<label for="tag-name">名称</label>
+	<input name="tag-name" id="tag-name" type="text" value="" size="40" aria-required="true" />
+	<p>这将是它在站点上显示的名字。</p>
+</div>
+<div class="form-field">
+	<label for="tag-slug">别名</label>
+	<input name="slug" id="tag-slug" type="text" value="" size="40" />
+	<p>“别名”是在URL中使用的别称，它可以令URL更美观。通常使用小写，只能包含字母，数字和连字符（-）。</p>
+</div>
+<div class="form-field">
+	<label for="parent">父级</label>
+	<select name='parent' id='parent' class='postform' >
+	<option value='-1'>无</option>
+	<option class="level-0" value="1">未分类</option>
+</select>
+			<p>分类目录和标签不同，它可以有层级关系。您可以有一个“音乐”分类目录，在这个目录下可以有叫做“流行”和“古典”的子目录。</p>
+	</div>
+<div class="form-field">
+	<label for="tag-description">描述</label>
+	<textarea name="description" id="tag-description" rows="5" cols="40"></textarea>
+	<p>描述只会在一部分主题中显示。</p>
+</div>
+
+<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="添加新分类目录"  /></p></form></div>
+
+</div>
+</div><!-- /col-left -->
+
+</div><!-- /col-container -->
+</div><!-- /wrap -->
+<script type="text/javascript">
+try{document.forms.addtag['tag-name'].focus();}catch(e){}
+</script>
+
+	<form method="get" action=""><table style="display: none"><tbody id="inlineedit">
+		<tr id="inline-edit" class="inline-edit-row" style="display: none"><td colspan="5" class="colspanchange">
+
+			<fieldset><div class="inline-edit-col">
+				<h4>快速编辑</h4>
+
+				<label>
+					<span class="title">名称</span>
+					<span class="input-text-wrap"><input type="text" name="name" class="ptitle" value="" /></span>
+				</label>
+					<label>
+					<span class="title">别名</span>
+					<span class="input-text-wrap"><input type="text" name="slug" class="ptitle" value="" /></span>
+				</label>
+				</div></fieldset>
+	
+		<p class="inline-edit-save submit">
+			<a accesskey="c" href="#inline-edit" class="cancel button-secondary alignleft">取消</a>
+			<a accesskey="s" href="#inline-edit" class="save button-primary alignright">更新分类目录</a>
+			<span class="spinner"></span>
+			<span class="error" style="display:none;"></span>
+			<input type="hidden" id="_inline_edit" name="_inline_edit" value="782c9ddbce" />			<input type="hidden" name="taxonomy" value="category" />
+			<input type="hidden" name="post_type" value="post" />
+			<br class="clear" />
+		</p>
+		</td></tr>
+		</tbody></table></form>
+	
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div>
+	
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var wpAjax = {"noPerm":"\u60a8\u65e0\u6743\u6267\u884c\u6b64\u64cd\u4f5c\u3002","broken":"\u53d1\u751f\u4e86\u65e0\u6cd5\u8bc6\u522b\u7684\u9519\u8bef\u3002"};var tagsl10n = {"noPerm":"\u60a8\u65e0\u6743\u6267\u884c\u6b64\u64cd\u4f5c\u3002","broken":"\u53d1\u751f\u4e86\u65e0\u6cd5\u8bc6\u522b\u7684\u9519\u8bef\u3002"};var inlineEditL10n = {"error":"\u4fdd\u5b58\u66f4\u6539\u65f6\u53d1\u751f\u9519\u8bef\u3002"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,wp-ajax-response,admin-tags,inline-edit-tax,svg-painter,heartbeat,wp-auth-check&amp;ver=4.0'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
+</body>
+</html>

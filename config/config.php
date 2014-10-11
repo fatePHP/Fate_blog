@@ -2,54 +2,18 @@
 
 return  Array(
 
-					 'debug'=>true,																 //µ÷ÊÔ¿ª¹Ø
+	 'debug'=>true,	//è°ƒè¯•å¼€å…³
+	 'app'=>array(	//åº”ç”¨é…ç½®
+			'extensionPath'=>array(),								 //ç¬¬ä¸‰æ–¹æ‰©å±•è·¯å¾„
+			'timezone'=>'Asia/Shanghai',							 //é»˜è®¤æ—¶åŒº
+			'language'=>'zh_cn',											 //é»˜è®¤åŠ è½½è¯­è¨€åŒ…
+			'control'=>'home',								 //é»˜è®¤æŽ§åˆ¶å™¨
+		        'action'=>'index',								 //é»˜è®¤æ–¹æ³•
+		        'charset'=>'utf-8',											 //é»˜è®¤å­—ç¬¦é›†
+		        'errorLevel'=>E_ALL,						 					 //é»˜è®¤é”™è¯¯çº§åˆ«
+                      ),
 					 
-					 'app'=>array(																 //Ó¦ÓÃÅäÖÃ
-					 		 'extensionPath'=>array(),								 //µÚÈý·½À©Õ¹Â·¾¶
-					 		 'timezone'=>'Asia/Shanghai',							 //Ä¬ÈÏÊ±Çø
-					 		 'language'=>'zh_cn',											 //Ä¬ÈÏ¼ÓÔØÓïÑÔ°ü
-					 		 'defaultControl'=>'home',								 //Ä¬ÈÏ¿ØÖÆÆ÷
-		        	 'defaultAction'=>'index',								 //Ä¬ÈÏ·½·¨
-		        	 'charset'=>'utf-8',											 //Ä¬ÈÏ×Ö·û¼¯
-		        	 'errorLevel'=>E_ALL,						 					 //Ä¬ÈÏ´íÎó¼¶±ð
-					 ),
-					 
-					 'db'=>array(
-		           'type'   =>'mysql',											 //Êý¾ÝÀàÐÍ
-				       'host'   =>'localhost',             			 //Êý¾Ý¿âµØÖ·
-				       'name'   =>'blog',              					 //Êý¾Ý¿âÃû×Ö
-				       'user'   =>'blog_admin',                  //Êý¾Ý¿âÕËºÅ
-				       'pwd'    =>'123blog456mysql',             //Êý¾Ý¿âÃÜÂë
-				       'prefix' =>'tb_',                         //Êý¾Ý¿â±íÇ°×º
-				       'show_error'=>true,                       //ÊÇ·ñÊä³öÏÔÊ¾Êý¾Ý¿â´íÎó
-				       'pconnect'=>false                         //ÊÇ·ñÊ¹ÓÃ³Ö¾ÃÁ´½Ó 
-		        ),
-		        		        
-		        'view'=>array(
-		        	 'left'=>'<{',                              //×óÏÞÖÆ·û
-		       		 'right'=>'}>',														  //ÓÒÏÞÖÆ·û
-		       		 'theme'=>'default',												//Ä£°åÖ÷ÌâÃû³Æ
-		       		 'layout'=>'home',                					//Ä£°å²¼¾ÖÎÄ¼þ
-		       		 'suffix'=>'.html'                          //Ä£°åÎÄ¼þºó×º ÐèÒª¼Ó'.'
-		        ),
-		                
-						'cache'=>array(
-						   'power'=>false,													  //»º´æÄ£°å¿ª¹Ø
-						   'lifeTime'=>60*60*24												//»º´æÉúÃüÖÜÆÚ
-						),
-						
-       			'log'=>array(
-       				  'power'=>false,														//¿ªÆôÈÕÖ¾
-       			),
-       			
-       			'cookie'=>array(													
-       					'cookie_pre'=>'fate_',                 		//cookieÇ°×º
-       			
-       			),
-       				           
-		       'httpStatusCode'=>array(											  //httpÇëÇó×´Ì¬Âë
-								 '404' => ''                    				 
-		        )
+
 
 );
 
