@@ -106,7 +106,7 @@
                 <li class='wp-submenu-head'>文章</li>
                 <li class="wp-first-item"><a href='<{root:admin/article}>' class="wp-first-item">所有文章</a></li>
                 <li><a href='<{root:admin/article/add}>'>写文章</a></li>
-                <li><a href='<{root:admin/article/category}>'>分类目录</a></li>
+                <li><a href='<{root:admin/category}>'>分类目录</a></li>
                 <li><a href='<{root:admin/article/tag}>'>标签</a></li>
             </ul>
         </li>
@@ -232,13 +232,30 @@
 </div>
 <script>
     $(function(){
-
-        var uri = '<{echo:Fate::app()->url->getUri()}>'
-        var module = '<{echo:Fate::app()->control}>'; 
+        
+        var menu = eval(<{echo:$menu}>);
+        var module =  '<{echo:Fate::app()->module}>';
+        var control = '<{echo:Fate::app()->control}>';
+        var action = '<{echo:Fate::app()->action}>';
         var menu_bar = $('#adminmenu');
-        var current_menu = $("#menu-"+module);
-        var current_tag = current_menu.children('ul').children('li').children('a[href="'+uri+'"]');
+        var current_menu ;
+        
+        $.each(menu,function(i){
+            if($.inArray(control,menu[i])!=-1){
+                current_menu = $('#'+i);;
+                return ;
+            }
+        })
+        
+        var href_parttern = control
+        if(action!='index'){
+            href_parttern = control+'/'+action;
+        }
+        var current_tag = current_menu.children('ul').children('li').children('a[href$="'+href_parttern+'"]');
 
+        if(current_tag.length==0){
+            current_tag = current_menu.children('ul').children('li').children('a[href$="'+control+'"]');   
+        }
         current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
         current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
         current_tag.addClass('current');
@@ -266,7 +283,7 @@
         initLayout();
 
         $(window).resize(function(){   
-                        initLayout();   
+               initLayout();   
         });
 
 })

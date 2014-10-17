@@ -5,44 +5,64 @@
     class articleControl extends adminLayoutControl {
                                     
             /*
-             * @brief 文章列表
+             * @brief 列表-文章
              */
             public function index(){
                 
-                 $articleModel = $this->model();
-                 $articleData = $articleModel->getAll(); 
-                 $this->render('admin/article/index');
+                 $articleData = $this->model->getAll();
+                 $timeData = array();
+                 $timeArr = $this->model->getTime();
+                 $categoryModel = $this->model('category','admin');
+                 $categoryArr = $categoryModel->getAll();
+                 $categoryData = array();
+                 
+                 foreach($timeArr as $time){
+                      $timeData[$time['year'].$time['month']] = $time['year'].'年'.$time['month'].'月'; 
+                 }
+                 
+                 foreach($categoryArr as $category){
+                     $categoryData[$category['term_id']] = $category['name'];
+                 }
+                       
+                 $data = array(
+                             'articleData'=>$articleData,
+                             'timeData'=> $timeData,
+                             'categoryData'=>$categoryData
+                         );
+                 $this->render('admin/article/index',$data);
             }
             
             /*
-             * @brief 编辑
+             * @brief 编辑-文章
              */
             public function edit() {
 
                 $this->render('admin/article/edit');
             }
-            
+                        
             /*
-             * @brief 添加
+             * @brief 添加-文章
              */
             public function add(){
 
                 $this->render('admin/article/edit');
             }
+            
+            /**
+             * @brief 回收-文章
+             */
+            public function recycle(){
+                
+                
+            }
+            
             /*
-             * @brief 删除
+             * @brief 删除-文章
              */
             public function del(){
 
             }
-            /*
-             * @brief 文章分类
-             */
-            public function category(){
-
-                $this->render('admin/article/category');
-            }
-            
+                        
             /*
              * @brief 文章标签
              */
@@ -50,6 +70,7 @@
 
                 $this->render('admin/article/tag');
             }
+            
      }
 
 ?>

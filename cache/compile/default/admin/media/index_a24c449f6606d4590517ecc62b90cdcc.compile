@@ -106,7 +106,7 @@
                 <li class='wp-submenu-head'>文章</li>
                 <li class="wp-first-item"><a href='<?php echo Fate::app()->url->getWebDir()."admin/article";?>' class="wp-first-item">所有文章</a></li>
                 <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/add";?>'>写文章</a></li>
-                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/category";?>'>分类目录</a></li>
+                <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/category";?>'>分类目录</a></li>
                 <li><a href='<?php echo Fate::app()->url->getWebDir()."admin/article/tag";?>'>标签</a></li>
             </ul>
         </li>
@@ -421,11 +421,20 @@ var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009
 </div>
 <script>
     $(function(){
-
+        
+        var menu = eval(<?php echo $menu;?>);
         var uri = '<?php echo Fate::app()->url->getUri();?>'
         var module = '<?php echo Fate::app()->control;?>'; 
         var menu_bar = $('#adminmenu');
-        var current_menu = $("#menu-"+module);
+        var current_menu ;
+        
+        $.each(menu,function(i){
+            if($.inArray(module,menu[i])!=-1){
+                current_menu = i;
+                return ;
+            }
+        })
+        current_menu = $('#'+current_menu);
         var current_tag = current_menu.children('ul').children('li').children('a[href="'+uri+'"]');
 
         current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
@@ -455,7 +464,7 @@ var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009
         initLayout();
 
         $(window).resize(function(){   
-                        initLayout();   
+               initLayout();   
         });
 
 })

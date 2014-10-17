@@ -4,7 +4,6 @@
 	min-height: 100%;
 	width: 100%;
 	-webkit-font-smoothing: subpixel-antialiased;
-        margin-top:-20px;
 }
 
 #wpcontent {
@@ -3207,4 +3206,13 @@ img {
 	div#post-body.metabox-holder.columns-1 {
 		overflow-x: hidden;
 	}
+}
+.level-0 {
+    text-indent: 0em;
+}
+.level-1 {
+    text-indent: 10px;
+}
+.level-2 {
+    text-indent: 20px;
 }
