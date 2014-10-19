@@ -10,21 +10,21 @@
         public function init(){
                 $this->table = 'term_taxonomy';
         }
-                
-        public function getAll(){
-            
-          $sql = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->order('tt.term_id DESC')->sql();
-          $data = $this->fetchAll($sql);
-          return $data;
-        }
         
         public function getInfoById($id){
             
-          $sql  = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where('tt.term_id='.$id)->sql();
-          $data = $this->fetchOne($sql);
-          return $data;
+            $sql  = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where('tt.term_id='.$id)->sql();
+            $data = $this->fetchOne($sql);
+            return $data;
         }
-        
+                
+        public function getAll(){
+            
+            $sql = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->order('tt.term_id DESC')->sql();
+            $data = $this->fetchAll($sql);
+            return $data;
+        }
+               
         public function getTree($data=array(),$level=0){
             
                 if(empty($data))
@@ -74,6 +74,25 @@
                 
                 return $flag;
             
+        }
+        
+        public function edit($condition,$data){
+
+                $term = $data['term'];
+                $termTaxonomy = $data['termTaxonomy'];
+
+                if($this->update('blog_terms',$term,$condition)){
+                    $this->update('blog_term_taxonomy',$termTaxonomy,$condition);
+                }
+        }
+        
+        public function del($id){
+            
+            $info = $this->getInfoById($id);
+            $term_taxonomy_id = $info['term_taxonomy_id'];
+            $this->delete('blog_terms','term_id='.$id);
+            $this->delete('blog_term_taxonomy','term_id='.$id);
+            $this->delete('blog_term_relationships','term_taxonomy_id='.$term_taxonomy_id);
         }
         
     }

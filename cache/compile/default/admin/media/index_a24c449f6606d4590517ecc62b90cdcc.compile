@@ -423,20 +423,28 @@ var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009
     $(function(){
         
         var menu = eval(<?php echo $menu;?>);
-        var uri = '<?php echo Fate::app()->url->getUri();?>'
-        var module = '<?php echo Fate::app()->control;?>'; 
+        var module =  '<?php echo Fate::app()->module;?>';
+        var control = '<?php echo Fate::app()->control;?>';
+        var action = '<?php echo Fate::app()->action;?>';
         var menu_bar = $('#adminmenu');
         var current_menu ;
         
         $.each(menu,function(i){
-            if($.inArray(module,menu[i])!=-1){
-                current_menu = i;
+            if($.inArray(control,menu[i])!=-1){
+                current_menu = $('#'+i);;
                 return ;
             }
         })
-        current_menu = $('#'+current_menu);
-        var current_tag = current_menu.children('ul').children('li').children('a[href="'+uri+'"]');
+        
+        var href_parttern = control
+        if(action!='index'){
+            href_parttern = control+'/'+action;
+        }
+        var current_tag = current_menu.children('ul').children('li').children('a[href$="'+href_parttern+'"]');
 
+        if(current_tag.length==0){
+            current_tag = current_menu.children('ul').children('li').children('a[href$="'+control+'"]');   
+        }
         current_menu.toggleClass('wp-not-current-submenu wp-has-current-submenu');
         current_menu.children('a').toggleClass('wp-not-current-submenu wp-has-current-submenu');
         current_tag.addClass('current');

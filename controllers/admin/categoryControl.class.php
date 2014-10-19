@@ -25,17 +25,21 @@
     
             $cid = $_GET['id'];
             
-            if(isset($_POST['doSubmit'])){
+            if(isset($_POST['submit'])){
 
-            }else{
-                
-                $infoData = $this->model()->getInfoById($cid);
-                $treeData = $this->model()->getTree();
-                $data = array(
-                     'category'=>$infoData,
-                     'tree'=>$treeData,
-                );
+                 $term = array('name'=>$_POST['name'],'slug'=>$_POST['slug']);
+                 $termTaxonomy = array('parent'=>$_POST['parent'],'description'=>$_POST['description']);
+                 $this->model()->edit('term_id='.$cid,array('term'=>$term,'termTaxonomy'=>$termTaxonomy));
+                 
             }
+                
+            $infoData = $this->model()->getInfoById($cid);
+            $treeData = $this->model()->getTree();
+            $data = array(
+                 'category'=>$infoData,
+                 'tree'=>$treeData,
+            );
+            
             $this->render('admin/category/edit',$data);
         }
         
@@ -67,7 +71,9 @@
          */
         public function del(){
             
-            
+            $cid = $_GET['id'];
+            $this->model()->del($cid); 
+            header('Location:/admin/category');
         }
 
         

@@ -3,13 +3,9 @@
     <div class="wrap">
     <h2>编辑分类目录</h2>
     <div id="ajax-response"></div>
-        <form name="edittag" id="edittag" method="post" action="edit-tags.php" class="validate">
-        <input type="hidden" name="action" value="editedtag" />
-        <input type="hidden" name="tag_ID" value="1" />
-        <input type="hidden" name="taxonomy" value="category" />
+    <form name="edittag" id="edittag" method="post" action="<{root:admin/category/edit/}><{echo:$category['term_id']}>" class="validate">
         <input type="hidden" name="_wp_original_http_referer" value="" />
         <input type="hidden" id="_wpnonce" name="_wpnonce" value="1fa7426ccb" />
-        <input type="hidden" name="_wp_http_referer" value="" />	
         <table class="form-table">
             <tr class="form-field form-required">
                 <th scope="row"><label for="name">名称</label></th>
