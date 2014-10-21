@@ -8,20 +8,12 @@
                  * @brief 首页-列表页
                  */
                 public function index(){
-                    
-                    $articleModel = $this->model('article','admin');
-                    $categoryModel = $this->model('category','admin');
-                    
-                    $articleAll = $articleModel->getAll();
-                    $articleRandom = $articleModel->getRandom();
-                    $articleArchive = $articleModel->getTime();
-                    $articleCategory =  array();
                    
+                    $articleModel = $this->model('article','admin');
+                    $articleAll = $articleModel->getAll();
+
                     $data = array(
                         'articleAll'=>$articleAll,
-                        'articleRandom'=>$articleRandom,
-                        'articleArchive'=>$articleArchive,
-                        'articleCategory'=>$articleCategory
                     );
                     
                     $this->render('home/index',$data);
@@ -32,7 +24,13 @@
                  */
                 public function detail(){
                     
-                    $this->render('home/detail');
+                    $id = $_GET['id'];
+                    $articleModel = $this->model('article','admin');
+                    $info = $articleModel->getInfoById($id);
+                    $data = array(
+                          'article'=>$info
+                    );
+                    $this->render('home/detail',$data);
                 }
 
         }

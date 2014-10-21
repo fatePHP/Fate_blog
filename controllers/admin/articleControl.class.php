@@ -63,14 +63,6 @@
 
             }
                         
-            /*
-             * @brief 文章标签
-             */
-            public function tag(){
-
-                $this->render('admin/article/tag');
-            }
-            
      }
 
 ?>

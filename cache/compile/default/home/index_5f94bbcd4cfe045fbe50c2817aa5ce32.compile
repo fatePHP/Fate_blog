@@ -2,71 +2,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-    <title>Fate--个人博客</title>
+    <title>Fate的博客</title>
     <link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
     <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/subscriptions.css\">";?>
     <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/widgets.css\">";?>
     <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/style.css\">";?>
-    <?php echo "<script src=\"/themes/default/skin/js/jquery.js\"></script>";?>
-    <?php echo "<script src=\"/themes/default/skin/js/jquery-migrate.min.js\"></script>";?>
-    <script type="text/javascript">
-            var _gaq = _gaq || [];
-
-            _gaq.push(['_setAccount', 'UA-42724379-1']);
-            _gaq.push(['_setDomainName', '.themehall.com']);
-            _gaq.push(['_setAllowHash', false]);
-            _gaq.push(['_trackPageview']);
-
-           (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-    </script>
+    <?php echo "<script src=\"/themes/default/skin/js/home/3D-Tags.js\"></script>";?>
 </head>
+<style>
 
+ </style>
 <body>
+
    <div class="site-container">
       <!-- 导航栏 start -->
       <nav class="nav-primary" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="wrap">
           <ul id="menu-short" class="menu omega-nav-menu menu-primary">
               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home first menu-item-1708">
-		 <a href="javascript:void(0);">首页</a>
+                  <a href="<?php echo Fate::app()->url->getWebDir()."";?>">首页</a>
 	      </li>
               <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1639">
-		 <a href="http://themehall.com/preview/omega/about">技术</a>
+                  <a href="<?php echo Fate::app()->url->getWebDir()."teachnologic";?>">技术</a>
                  <ul class="sub-menu">
                         <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1640">
-                                <a href="javascript:void(0);">编程语言</a>
+                            <a href="<?php echo Fate::app()->url->getWebDir()."program";?>">编程语言</a>
                         </li>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1640">
-                                <a href="javascript:void(0);">服务器架构</a>
+                            <a href="<?php echo Fate::app()->url->getWebDir()."schema";?>">服务器架构</a>
                         </li>
                  </ul>
               </li>
               <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1719">
-                 <a href="http://themehall.com/preview/omega/theme-layout">书籍</a>
+                  <a href="<?php echo Fate::app()->url->getWebDir()."book";?>">书籍</a>
                  <ul class="sub-menu">
-                            <li id="menu-item-1720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1720">
-                                    <a href="javascript:void(0);">心理 / 励志</a>
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1720">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."encouragement ";?>">心理 / 励志</a>
                             </li>
-                            <li id="menu-item-1721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1721">
-                                    <a href="javascript:void(0);">编程 / 架构</a>
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1721">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."code";?>">编程 / 架构</a>
                             </li>
-                            <li id="menu-item-1722" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1722">
-                                    <a href="hjavascript:void(0);">搞笑 / 娱乐</a>
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1722">
+                                <a href="<?php echo Fate::app()->url->getWebDir()."relax";?>">搞笑 / 娱乐</a>
                             </li>
                  </ul>
                </li>	
                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1638">
-                        <a href="javascript:void(0);">心灵小馆</a>
+                   <a href="<?php echo Fate::app()->url->getWebDir()."heart";?>">心灵小馆</a>
                </li>
                <li class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-1707">
-                        <a target="_blank" href="javascript:void(0);">生活</a>
+                   <a target="_blank" href="<?php echo Fate::app()->url->getWebDir()."life";?>">生活</a>
                </li>
                <li class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-1707">
-                        <a target="_blank" href="javascript:void(0);">关于</a>
+                   <a target="_blank" href="<?php echo Fate::app()->url->getWebDir()."about";?>">关于</a>
                </li>
 	   </ul>
 	</div>	
@@ -96,43 +84,28 @@
      <div class="entry-wrap">
         <header class="entry-header">	
             <h2 class="entry-title" itemprop="headline">
-                <a href="http://themehall.com/preview/omega/omega-is-the-last-greek-letter" rel="bookmark">
-                    Omega is the last Greek letter
-                </a>
+               <a href="<?php echo Fate::app()->url->getWebDir()."";?><?php echo $article['year'].'/'.$article['month'].'/'.$article['day'].'/'.$article['ID'];?>.html">
+                    <?php echo $article['post_title'];?>
+               </a>
             </h2>
             <div class="entry-meta">
                 Posted by 
                 <span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
-                    <a href="http://themehall.com/preview/omega/author/hwijaya" class="entry-author-link">
-                        <span class="entry-author-name">themehall</span>
+                    <a href="" class="entry-author-link">
+                        <span class="entry-author-name">Fate</span>
                     </a>
                 </span> on 
-                <time class="entry-time" datetime="2013-01-11T20:22:19+00:00" itemprop="datePublished" >January 11, 2013 </time>  
+                <time class="entry-time"  itemprop="datePublished" ><?php echo $article['post_date'];?></time>  
             </div>
         </header>
         <div class="entry-content">		
-             <a href="http://themehall.com/preview/omega/omega-is-the-last-greek-letter" title="Omega is the last Greek letter">
-                 <img src="http://themehall.com/preview/omega/wp-content/uploads/sites/5/2013/01/cup-1024x576.jpg" alt="Omega is the last Greek letter" class="landscape thumbnail large" width="640" height="360" itemprop="image" />
-             </a>
-             <div id="lorems">
-                <p>Many say exploration is part of our destiny, but it’s actually our duty to future generations and their quest to ensure the survival of the human species. Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#8217;s earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-                <p>Problems look mighty small from 150 miles up.</p>
-                <p>To be the first to enter the cosmos, to engage, single-handed, in an unprecedented duel with nature—could one dream of anything more?</p>
-                <p>The regret on our side is, they used to say years ago, we are reading about you in science class. Now they say, we are reading about you in history class.</p>
-             </div>		
+		<?php echo $article['post_content'];?>
         </div>
         <!-- 文章标签相关信息 start-->
 	<footer class="entry-footer">
             <div class="entry-meta">
-                 <span class="entry-terms category" itemprop="articleSection">Posted in: 
-                     <a href="http://themehall.com/preview/omega/category/markup" rel="tag">Markup</a>
-                 </span>		| 
                  <span class="entry-terms post_tag" itemprop="keywords">标签: 
-                     <a href="http://themehall.com/preview/omega/tag/content-2" rel="tag">content</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/css" rel="tag">css</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/formatting-2" rel="tag">formatting</a>,
-                     <a href="http://themehall.com/preview/omega/tag/html" rel="tag">html</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/markup-2" rel="tag">markup</a>
+                     <a href="" rel="tag">content</a>
                  </span>		
             </div>
         </footer>
@@ -160,14 +133,14 @@
                 <!-- 搜索栏 start -->
                 <section id="search-2" class="widget widget-1 even widget-first widget_search">
                         <div class="widget-wrap">
-                                <form role="search" method="get" class="search-form" action="http://themehall.com/preview/omega/">
+                                <form role="search" method="get" class="search-form" action="">
                                         <input type="search" class="search-field" placeholder="Search ..." value="" name="s" title="Search for:">
                                         <input type="submit" class="search-submit" value="Search">
                                 </form>
                         </div>
                 </section>
                 <!-- 搜索栏 end -->
-
+                                
                 <!-- 日历 start -->
                 <section id="calendar-2" class="widget widget-2 odd widget_calendar">
                         <div class="widget-wrap">
@@ -224,7 +197,18 @@
                             </div>
                      </section>
                    <!-- 日历 end -->
-
+               <!-- 标签云 start -->
+                <section id="calendar-2" class="widget widget-2 odd widget_calendar">
+                        <div class="widget-wrap">
+                                <h4 class="widget-title">标签云</h4>		
+                                <div id="tags_wrap">
+                                    <?php foreach($articleTags as $key => $tag){?>
+                                          <a href="#" ><?php echo $tag['name'];?></a>
+                                    <?php }?>
+                                </div>
+                            </div>
+                 </section>
+                 <!-- 标签云 end -->
                     <!-- 最新文章 start -->
                     <section id="recent-posts-2" class="widget widget-3 even widget_recent_entries">
                        <div class="widget-wrap">		
@@ -258,19 +242,6 @@
                         </div>
                     </section>
                     <!-- 文章归档 end -->
-
-                    <!-- 文章标签 start -->
-                    <section id="categories-2" class="widget widget-5 even widget-last widget_categories">
-                        <div class="widget-wrap">
-                            <h4 class="widget-title">标签</h4>		
-                            <ul>
-                                <li class="cat-item cat-item-2">
-                                     <a href="" title="">aciform</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <!-- 文章标签 end -->
                  </aside>
                  <!-- 右侧栏 end -->
             </div>
@@ -278,34 +249,16 @@
         <!-- 正文 end -->
 
         <!-- 尾部 start -->
-        <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+      <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
                 <div class="wrap" style="text-align:center;" >
                         <div class="footer-content footer-insert">
                                 <p>Copyright &#169;</p>
                                 <p class="credit"></p>
                         </div>
                 </div>
-        </footer>
+      </footer>
         <!-- 尾部 end -->
 
 </div>
-
-		<div style="display:none"></div>
-		<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201432'></script>
-		<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2014Augaa'></script>
-		
-		<script type='text/javascript'>
-		/* <![CDATA[ */
-		var WPGroHo = {"my_hash":""};
-		/* ]]> */
-		</script>
-		
-		<script src="http://stats.wordpress.com/e-201432.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		st_go({v:'ext',j:'1:2.9.3',blog:'56014298',post:'0',tz:'0'});
-		var load_cmc = function(){linktracker_init(56014298,0,2);};
-		if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
-		else load_cmc();
-		</script>
 	</body>
 </html>

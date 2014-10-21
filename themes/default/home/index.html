@@ -4,43 +4,28 @@
      <div class="entry-wrap">
         <header class="entry-header">	
             <h2 class="entry-title" itemprop="headline">
-                <a href="http://themehall.com/preview/omega/omega-is-the-last-greek-letter" rel="bookmark">
-                    Omega is the last Greek letter
-                </a>
+               <a href="<{root:}><{echo:$article['year'].'/'.$article['month'].'/'.$article['day'].'/'.$article['ID']}>.html">
+                    <{echo:$article['post_title']}>
+               </a>
             </h2>
             <div class="entry-meta">
                 Posted by 
                 <span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
-                    <a href="http://themehall.com/preview/omega/author/hwijaya" class="entry-author-link">
-                        <span class="entry-author-name">themehall</span>
+                    <a href="" class="entry-author-link">
+                        <span class="entry-author-name">Fate</span>
                     </a>
                 </span> on 
-                <time class="entry-time" datetime="2013-01-11T20:22:19+00:00" itemprop="datePublished" >January 11, 2013 </time>  
+                <time class="entry-time"  itemprop="datePublished" ><{echo:$article['post_date']}></time>  
             </div>
         </header>
         <div class="entry-content">		
-             <a href="http://themehall.com/preview/omega/omega-is-the-last-greek-letter" title="Omega is the last Greek letter">
-                 <img src="http://themehall.com/preview/omega/wp-content/uploads/sites/5/2013/01/cup-1024x576.jpg" alt="Omega is the last Greek letter" class="landscape thumbnail large" width="640" height="360" itemprop="image" />
-             </a>
-             <div id="lorems">
-                <p>Many say exploration is part of our destiny, but it’s actually our duty to future generations and their quest to ensure the survival of the human species. Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#8217;s earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-                <p>Problems look mighty small from 150 miles up.</p>
-                <p>To be the first to enter the cosmos, to engage, single-handed, in an unprecedented duel with nature—could one dream of anything more?</p>
-                <p>The regret on our side is, they used to say years ago, we are reading about you in science class. Now they say, we are reading about you in history class.</p>
-             </div>		
+		<{echo:$article['post_content']}>
         </div>
         <!-- 文章标签相关信息 start-->
 	<footer class="entry-footer">
             <div class="entry-meta">
-                 <span class="entry-terms category" itemprop="articleSection">Posted in: 
-                     <a href="http://themehall.com/preview/omega/category/markup" rel="tag">Markup</a>
-                 </span>		| 
                  <span class="entry-terms post_tag" itemprop="keywords">标签: 
-                     <a href="http://themehall.com/preview/omega/tag/content-2" rel="tag">content</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/css" rel="tag">css</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/formatting-2" rel="tag">formatting</a>,
-                     <a href="http://themehall.com/preview/omega/tag/html" rel="tag">html</a>, 
-                     <a href="http://themehall.com/preview/omega/tag/markup-2" rel="tag">markup</a>
+                     <a href="" rel="tag">content</a>
                  </span>		
             </div>
         </footer>

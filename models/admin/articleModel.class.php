@@ -14,7 +14,7 @@
              */
             public function getAll(){
                 
-                $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.post_type = 'post' AND (a.post_status = 'publish' OR a.post_status = 'future' OR a.post_status = 'draft' OR a.post_status = 'pending' OR a.post_status = 'private') ")->order('a.post_date DESC')->sql();
+                $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,a.post_content,year(post_date) as year,month(post_date) as month, day(post_date) as day,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.post_type = 'post' AND (a.post_status = 'publish' OR a.post_status = 'future' OR a.post_status = 'draft' OR a.post_status = 'pending' OR a.post_status = 'private') ")->order('a.post_date DESC')->sql();
                 $data = $this->fetchAll($sql);
                 return $data;
             }
@@ -46,6 +46,18 @@
                 $sql = $this->fields('ID,YEAR(post_date) as year,MONTH(post_date) as month, DAY(post_date) as day,post_title')->where("post_type = 'post' AND (post_status = 'publish' OR post_status = 'future' OR post_status = 'draft' OR post_status = 'pending' OR post_status = 'private') ")->order('post_date DESC')->limit('5')->sql();
                 $data = $this->fetchAll($sql);
                 return $data;
+            }
+            
+            /**
+             * @brief 返回指定ID文章数据
+             */
+            
+            public function getInfoById($id){
+                 
+                 $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,a.post_content,year(post_date) as year,month(post_date) as month, day(post_date) as day,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.ID={$id}")->sql();
+                 
+                 $data = $this->fetchOne($sql);
+                 return $data;
             }
             
     }

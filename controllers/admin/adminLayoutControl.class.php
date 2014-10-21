@@ -6,7 +6,7 @@
                 $this->layout = 'admin';
                 $menu = array(
                     'menu-admin'=>array('admin'),
-                    'menu-article'=>array('article','category'),
+                    'menu-article'=>array('article','category','tag'),
                     'menu-media'=>array()
                 );
                 $this->setVal('menu',json_encode($menu));

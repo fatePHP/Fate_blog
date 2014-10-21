@@ -9,7 +9,7 @@
          */
         public function index(){
             
-            $all = $this->model()->getAll();
+            $all = $this->model()->getAll('tt.taxonomy="category"');
             $treeData = $this->model()->getTree($all);
             $data = array(
                   'treeData'=>$treeData,

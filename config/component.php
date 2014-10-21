@@ -38,11 +38,18 @@
           'url'=>array(
                           'format'=>'pathinfo',
                           'rules'=>array(
-                                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                                '<year:\d+>/<month:\d+>/<day:\d+>/<id:\d+>'=>'/home/home/detail/<id>',
+                                '<controller:\w+>/<action:\w+>(/)?' => '<controller>/<action>',
                                 '<controller:\w+>/<action:\w+><id:\d+>' => '<controller>/<action>/<id>',
                                 '<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
-                                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'<module>/<controller>/<action>/<id>'
+                                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'<module>/<controller>/<action>/<id>',
+                                '<category:\w+>'=>'/',
                           ),
+                          'ruleMetas'=>array(
+                                0=>array(
+                                       'suffix'=>'.html', 
+                                )
+                          )
                        )
     )
 

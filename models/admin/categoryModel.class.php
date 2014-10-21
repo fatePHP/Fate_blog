@@ -18,9 +18,9 @@
             return $data;
         }
                 
-        public function getAll(){
+        public function getAll($where='1=1'){
             
-            $sql = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->order('tt.term_id DESC')->sql();
+            $sql = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where($where)->order('tt.term_id DESC')->sql();
             $data = $this->fetchAll($sql);
             return $data;
         }

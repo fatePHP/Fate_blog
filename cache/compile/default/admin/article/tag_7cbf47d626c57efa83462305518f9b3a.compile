@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>个人博客管理后台</title>
+<title>博客管理后台</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link type="/image/x-icon" href="<?php echo Fate::app()->url->getWebDir()."themes/default/skin/image/favicon.ico";?>" rel="icon">
 <?php echo "<link rel=\"stylesheet\" href=\"/themes/default/skin/css/admin/dashicons.css\">";?>
