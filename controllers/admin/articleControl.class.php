@@ -29,7 +29,7 @@
                              'timeData'=> $timeData,
                              'categoryData'=>$categoryData
                          );
-                 $this->render('admin/article/index',$data);
+                 $this->render($data);
             }
             
             /*
@@ -37,7 +37,7 @@
              */
             public function edit() {
 
-                $this->render('admin/article/edit');
+                $this->render();
             }
                         
             /*
@@ -45,7 +45,7 @@
              */
             public function add(){
 
-                $this->render('admin/article/edit');
+                $this->render('','admin/article/edit');
             }
             
             /**

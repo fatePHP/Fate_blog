@@ -16,7 +16,7 @@
                   'total'=>count($tagData)
             );
             
-            $this->render('admin/tag/index',$data);
+            $this->render($data);
         }
         
         /**
@@ -39,7 +39,7 @@
                  'tag'=>$infoData,
             );
             
-            $this->render('admin/tag/edit',$data);
+            $this->render($data);
         }
         
         /**

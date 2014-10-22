@@ -4,16 +4,17 @@
         
         
         'db'=>array(
-		       'type'   =>'mysql',           //数据类型
-                        'host'   =>'182.92.190.32',  //数据库地址
-                        'name'   =>'fate_blog',      //数据库名字
-                        'user'   =>'root',           //数据库账号
-                        'pwd'    =>'zhujixia2012',   //数据库密码
-                        'prefix' =>'blog_',          //数据库表前缀
-                        'showError'=>true,          //是否输出显示数据库错误
-                        'pconnect'=>false,          //是否使用持久链接 
-                        'charset'=>'utf8'           //输出的字符集
-		     ),
+		  'mysql'=>array(          
+                            'host'   =>'182.92.190.32',  //数据库地址
+                            'name'   =>'fate_blog',      //数据库名字
+                            'user'   =>'root',           //数据库账号
+                            'pwd'    =>'zhujixia2012',   //数据库密码
+                            'prefix' =>'blog_',          //数据库表前缀
+                            'showError'=>true,          //是否输出显示数据库错误
+                            'pconnect'=>false,          //是否使用持久链接 
+                            'charset'=>'utf8'            //输出的字符集
+		  )
+         ),
 		        		        
 	 'view'=>array(
 		        'left'=>'<{',               //左限制符

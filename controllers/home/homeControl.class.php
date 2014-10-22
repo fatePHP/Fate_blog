@@ -16,7 +16,7 @@
                         'articleAll'=>$articleAll,
                     );
                     
-                    $this->render('home/index',$data);
+                    $this->render($data);
                 }
                 
                 /**
@@ -30,7 +30,7 @@
                     $data = array(
                           'article'=>$info
                     );
-                    $this->render('home/detail',$data);
+                    $this->render($data);
                 }
 
         }

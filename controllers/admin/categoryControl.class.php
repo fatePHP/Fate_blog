@@ -15,7 +15,7 @@
                   'treeData'=>$treeData,
                   'total'=>count($all)
             );
-            $this->render('admin/category/index',$data);
+            $this->render($data);
         }
         
         /**
@@ -40,7 +40,7 @@
                  'tree'=>$treeData,
             );
             
-            $this->render('admin/category/edit',$data);
+            $this->render($data);
         }
         
         /**
