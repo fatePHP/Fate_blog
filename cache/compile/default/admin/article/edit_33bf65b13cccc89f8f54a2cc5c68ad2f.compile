@@ -228,453 +228,326 @@
 <!-- menu end -->
 
 <div id="wpcontent"><div id="wpbody">
-    <div id="wpbody-content" aria-label="主内容" tabindex="0">
-        <div id="screen-meta" class="metabox-prefs">
-           <div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="“上下文帮助”选项卡">
-              <div id="contextual-help-back"></div>
-		<div id="contextual-help-columns">
-                   <div class="contextual-help-tabs">
-                      <ul>
-                          <li id="tab-link-customize-display" class="active">
-                            <a href="#tab-panel-customize-display" aria-controls="tab-panel-customize-display">自定义显示方式</a>
-			  </li>
-                          <li id="tab-link-title-post-editor">
-                             <a href="#tab-panel-title-post-editor" aria-controls="tab-panel-title-post-editor">标题和文章编辑器</a>
-			  </li>
-                          <li id="tab-link-inserting-media">
-			     <a href="#tab-panel-inserting-media" aria-controls="tab-panel-inserting-media">插入多媒体</a>
-			  </li>
-			  <li id="tab-link-publish-box">
-			      <a href="#tab-panel-publish-box" aria-controls="tab-panel-publish-box">发布设置</a>
-			  </li>
-                          <li id="tab-link-discussion-settings">
-			      <a href="#tab-panel-discussion-settings" aria-controls="tab-panel-discussion-settings">讨论设置</a>
-			  </li>
-		        </ul>
-                      </div>
+    <div class="wrap">
+        <h2>撰写新文章</h2>
+        <div id="lost-connection-notice" class="error hidden">
+            <p>
+                <span class="spinner"></span> <strong>连接丢失。</strong>保存已被禁用，直到您重新连接。	
+               <span class="hide-if-no-sessionstorage">我们正在您的浏览器中备份此文章，以防不测。</span>
+            </p>
+        </div>
+        <form name="post" action="post.php" method="post" id="post">
+            <input type="hidden" id="originalaction" name="originalaction" value="editpost" />
+            <input type="hidden" id="post_author" name="post_author" value="1" />
+            <input type="hidden" id="post_type" name="post_type" value="post" />
+            <input type="hidden" id="original_post_status" name="original_post_status" value="auto-draft" />
+            <input type="hidden" id="referredby" name="referredby" value="http://localhost/wordpress/wp-admin/edit.php" />
+            <input type="hidden" name="_wp_original_http_referer" value="http://localhost/wordpress/wp-admin/edit.php" />
+            <input type='hidden' id='auto_draft' name='auto_draft' value='1' />
+            <input type='hidden' id='post_ID' name='post_ID' value='6' />
+            <input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="65317e56e7" />
+            <input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="01a57af5d4" />
 
-		      <div class="contextual-help-sidebar">
-                            <p>您亦可通过<a href="options-writing.php">快速发布书签</a>来创建文章。</p>
-                            <p><strong>更多信息：</strong></p>
-                            <p><a href="http://cn.forums.wordpress.org" target="_blank">中文支持论坛</a></p>			
-                      </div>
-					
-		      <div class="contextual-help-tabs-wrap">
-                          <div id="tab-panel-customize-display" class="help-tab-content active">
-			      <p>标题区域和文章编辑区域的位置是固定的，但您可以通过拖拽来重新排列其它模块。点击模块标题可以最小化或展开模块。一些模块是默认隐藏的，您也可以使用“显示选项”在页面中取消隐藏这些模块（摘要、发送Trackback、自定义栏目、讨论、别名，和作者）。您还可以切换一栏/两栏布局。</p>		     </div>
-                          <div id="tab-panel-title-post-editor" class="help-tab-content">
-			      <p><strong>标题</strong> - 为您的文章键入一个标题。之后，您将看到一个固定链接地址，它是可以编辑的。</p>
-                              <p><strong>文章编辑器</strong> - 键入您文章的文本。编辑器有两种编辑模式：“可视化”和“文本”。点击相应的标签可进行切换。“可视化”模式显示所见即所得编辑器。点击工具栏最后一个图标可以展开第二行控制按钮；在“文本”模式中，您可以输入原始HTML标签和文章文本。点击文章编辑器上方的图标可以向文章插入多媒体文件。您可以通过“可视化”模式中的“全屏”图标（第一行倒数第二个）来使用“全屏写作界面”。进入该界面后，将鼠标移至上方，控制按钮就会显示出来。点击“退出全屏”可返回标准编辑界面。</p>
-                              <p>键盘用户：当您在可视化编辑器中时，您可以使用<kbd>Alt + F10</kbd>来访问工具栏。</p>                                                     </div>
-						
-			   <div id="tab-panel-inserting-media" class="help-tab-content">
-			      <p>您可以通过点击“添加媒体”按钮上传或插入多媒体文件（图像、音频、文档等）。您可以从已经上传到媒体库的文件中选择，并直接插入文章，或者上传新的文件，然后再插入。要创建相册，选择要添加的图像，并点击“创建新相册”按钮。</p>
-                              <p>您也可以从Twitter、YouTube、56.com、Youku、Tudou和Flickr等网站添加多媒体内容。只需在您的文章里另起一行，然后粘贴页面的网址。请<a href="http://codex.wordpress.org/zh-cn:%E5%B5%8C%E5%85%A5">阅读文档</a>来了解用法。</p>			
-                           </div>
-						
-                           <div id="tab-panel-publish-box" class="help-tab-content">
-			       <p>本页几个模块控制内容发布方式：</p>
-                               <ul>
-                                   <li><strong>发布</strong> - 您可以在“发布”区域设置文章的属性。点击“状态”、“可见性”、“发布”右侧的“编辑”按钮，可以调整更多设置。可见性设置包括密码保护和文章置顶；通过设置发布选项，可实现定时发布功能。</li>
-                                   <li><strong>文章形式</strong> - 该选项决定主题应如何显示您的某篇文章。通常，主题对于“标准”文章，会正常显示标题和段落；而对于“日志”式文章，则通常不显示标题。请浏览Codex文档来查看<a href="http://codex.wordpress.org/zh-cn:%E6%96%87%E7%AB%A0%E5%BD%A2%E5%BC%8F#.E6.94.AF.E6.8C.81.E7.9A.84.E5.BD.A2.E5.BC.8F">每种文章形式的介绍</a>。您的主题或许会支持最多十种文章形式。</li>
-                                   <li><strong>特色图片</strong> - 为文章配上一张特色图片。若您的主题具有“特色图片”功能，这张图片可能会显示在首页、页面顶端等位置。</li>
-                               </ul>							
-                            </div>
-						
-                            <div id="tab-panel-discussion-settings" class="help-tab-content">
-				   <p><strong>发送 trackback</strong> - Trackback是通知旧博客系统您已链接至它们的一种方式。请输入希望发送trackback至哪个（哪些）URL。如果您链接到的是其他WordPress站点，则无须填写此栏，这些站点将自动通过pingback方式通知。</p>
-                                   <p><strong>讨论</strong> - 您可以设置评论和引用通告的开关。若该篇文章有评论，您可以在这里浏览、审核评论。</p>
-                            </div>
-											
-                        </div>
+            <div id="poststuff">
+             <div id="post-body" class="metabox-holder columns-2">
+               <div id="postbox-container-1" class="postbox-container">
+                <div id="side-sortables" class="meta-box-sortables">
+                  <div id="submitdiv" class="postbox " >
+                    <div class="handlediv" title="点击以切换"><br /></div>
+                      <h3 class='hndle'><span>发布</span></h3>
+                        <div class="inside">
+                          <div class="submitbox" id="submitpost">
+                           <div id="minor-publishing">
+                              <div style="display:none;">
+                                <p class="submit">
+                                  <input type="submit" name="save" id="save" class="button" value="保存"  />
+                                </p>
+                              </div>
+  
+                              <div id="minor-publishing-actions">
+                                <div id="save-action">
+                                <input  type="submit" name="save" id="save-post" value="保存草稿" class="button" />
+                                <span class="spinner"></span>
+                                </div>
+                                <div id="preview-action">
+                                    <a class="preview button" href="" target="wp-preview-6" id="post-preview">预览</a>
+                                    <input type="hidden" name="wp-preview" id="wp-preview" value="" />
+                                </div>
+                                <div class="clear"></div>
+                              </div>
+
+            <div id="misc-publishing-actions">
+
+            <div class="misc-pub-section misc-pub-post-status"><label for="post_status">状态：</label>
+            <span id="post-status-display">
+            草稿</span>
+            <a href="#post_status" class="edit-post-status hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑状态</span></a>
+
+            <div id="post-status-select" class="hide-if-js">
+            <input type="hidden" name="hidden_post_status" id="hidden_post_status" value="draft" />
+            <select name='post_status' id='post_status'>
+            <option value='pending'>等待复审</option>
+            <option selected='selected' value='draft'>草稿</option>
+            </select>
+             <a href="#post_status" class="save-post-status hide-if-no-js button">确定</a>
+             <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel">取消</a>
+            </div>
+
+            </div><!-- .misc-pub-section -->
+
+            <div class="misc-pub-section misc-pub-visibility" id="visibility">
+            公开度： <span id="post-visibility-display">公开</span>
+            <a href="#visibility" class="edit-visibility hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑可见性</span></a>
+
+            <div id="post-visibility-select" class="hide-if-js">
+            <input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
+            <input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
+            <input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
+            <input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
+            <span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
+            <input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
+            <span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
+            <input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
+
+            <p>
+             <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
+             <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
+            </p>
+            </div>
+
+            </div><!-- .misc-pub-section -->
+
+            <div class="misc-pub-section curtime misc-pub-curtime">
+                    <span id="timestamp">
+                    <b>立即</b>发布</span>
+                    <a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑日期、时间</span></a>
+                    <div id="timestampdiv" class="hide-if-js"><div class="timestamp-wrap"><label for="aa" class="screen-reader-text">年</label><input type="text" id="aa" name="aa" value="2014" size="4" maxlength="4" autocomplete="off" />年<label for="mm" class="screen-reader-text">月份</label><select id="mm" name="mm">
+                                    <option value="01" >一</option>
+                                    <option value="02" >二</option>
+                                    <option value="03" >三</option>
+                                    <option value="04" >四</option>
+                                    <option value="05" >五</option>
+                                    <option value="06" >六</option>
+                                    <option value="07" >七</option>
+                                    <option value="08" >八</option>
+                                    <option value="09" >九</option>
+                                    <option value="10"  selected='selected'>十</option>
+                                    <option value="11" >十一</option>
+                                    <option value="12" >十二</option>
+            </select>月<label for="jj" class="screen-reader-text">日期</label><input type="text" id="jj" name="jj" value="05" size="2" maxlength="2" autocomplete="off" />日@<label for="hh" class="screen-reader-text">小时</label><input type="text" id="hh" name="hh" value="15" size="2" maxlength="2" autocomplete="off" />:<label for="mn" class="screen-reader-text">分钟</label><input type="text" id="mn" name="mn" value="33" size="2" maxlength="2" autocomplete="off" /></div><input type="hidden" id="ss" name="ss" value="46" />
+
+            <input type="hidden" id="hidden_mm" name="hidden_mm" value="10" />
+            <input type="hidden" id="cur_mm" name="cur_mm" value="10" />
+            <input type="hidden" id="hidden_jj" name="hidden_jj" value="05" />
+            <input type="hidden" id="cur_jj" name="cur_jj" value="05" />
+            <input type="hidden" id="hidden_aa" name="hidden_aa" value="2014" />
+            <input type="hidden" id="cur_aa" name="cur_aa" value="2014" />
+            <input type="hidden" id="hidden_hh" name="hidden_hh" value="15" />
+            <input type="hidden" id="cur_hh" name="cur_hh" value="15" />
+            <input type="hidden" id="hidden_mn" name="hidden_mn" value="33" />
+            <input type="hidden" id="cur_mn" name="cur_mn" value="33" />
+
+            <p>
+            <a href="#edit_timestamp" class="save-timestamp hide-if-no-js button">确定</a>
+            <a href="#edit_timestamp" class="cancel-timestamp hide-if-no-js button-cancel">取消</a>
+            </p>
+            </div>
+            </div>
+            </div>
+            <div class="clear"></div>
+            </div>
+
+            <div id="major-publishing-actions">
+            <div id="delete-action">
+            <a class="submitdelete deletion" href="http://localhost/wordpress/wp-admin/post.php?post=6&amp;action=trash&amp;_wpnonce=7d7210fd6c">移至回收站</a></div>
+
+            <div id="publishing-action">
+            <span class="spinner"></span>
+                            <input name="original_publish" type="hidden" id="original_publish" value="发布" />
+                            <input type="submit" name="publish" id="publish" class="button button-primary button-large" value="发布" accesskey="p"  /></div>
+            <div class="clear"></div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+            <div id="formatdiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>形式</span></h3>
+            <div class="inside">
+                    <div id="post-formats-select">
+                            <input type="radio" name="post_format" class="post-format" id="post-format-0" value="0"  checked='checked' /> <label for="post-format-0" class="post-format-icon post-format-standard">标准</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-aside" value="aside"  /> <label for="post-format-aside" class="post-format-icon post-format-aside">日志</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-image" value="image"  /> <label for="post-format-image" class="post-format-icon post-format-image">图像</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-video" value="video"  /> <label for="post-format-video" class="post-format-icon post-format-video">视频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-audio" value="audio"  /> <label for="post-format-audio" class="post-format-icon post-format-audio">音频</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-quote" value="quote"  /> <label for="post-format-quote" class="post-format-icon post-format-quote">引语</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-link" value="link"  /> <label for="post-format-link" class="post-format-icon post-format-link">链接</label>
+                                            <br /><input type="radio" name="post_format" class="post-format" id="post-format-gallery" value="gallery"  /> <label for="post-format-gallery" class="post-format-icon post-format-gallery">相册</label>
+                            <br />
                     </div>
-			</div>
-				<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="“显示选项”选项卡">
-		<form id="adv-settings" action="" method="post">
-					<h5>显示下列项目</h5>
-					<div class="metabox-prefs">
-				<label for="formatdiv-hide"><input class="hide-postbox-tog" name="formatdiv-hide" type="checkbox" id="formatdiv-hide" value="formatdiv" checked="checked" />形式</label>
-<label for="categorydiv-hide"><input class="hide-postbox-tog" name="categorydiv-hide" type="checkbox" id="categorydiv-hide" value="categorydiv" checked="checked" />分类目录</label>
-<label for="tagsdiv-post_tag-hide"><input class="hide-postbox-tog" name="tagsdiv-post_tag-hide" type="checkbox" id="tagsdiv-post_tag-hide" value="tagsdiv-post_tag" checked="checked" />标签</label>
-<label for="postimagediv-hide"><input class="hide-postbox-tog" name="postimagediv-hide" type="checkbox" id="postimagediv-hide" value="postimagediv" checked="checked" />特色图像</label>
-<label for="postexcerpt-hide"><input class="hide-postbox-tog" name="postexcerpt-hide" type="checkbox" id="postexcerpt-hide" value="postexcerpt" />摘要</label>
-<label for="trackbacksdiv-hide"><input class="hide-postbox-tog" name="trackbacksdiv-hide" type="checkbox" id="trackbacksdiv-hide" value="trackbacksdiv" />发送Trackback</label>
-<label for="postcustom-hide"><input class="hide-postbox-tog" name="postcustom-hide" type="checkbox" id="postcustom-hide" value="postcustom" />自定义栏目</label>
-<label for="commentstatusdiv-hide"><input class="hide-postbox-tog" name="commentstatusdiv-hide" type="checkbox" id="commentstatusdiv-hide" value="commentstatusdiv" />讨论</label>
-<label for="slugdiv-hide"><input class="hide-postbox-tog" name="slugdiv-hide" type="checkbox" id="slugdiv-hide" value="slugdiv" />别名</label>
-<label for="authordiv-hide"><input class="hide-postbox-tog" name="authordiv-hide" type="checkbox" id="authordiv-hide" value="authordiv" />作者</label>
-				<br class="clear" />
-			</div>
-					<h5 class="screen-layout">页面布局</h5>
-		<div class='columns-prefs'>分栏数目：				<label class="columns-prefs-1">
-					<input type='radio' name='screen_columns' value='1'
-						 />
-					1				</label>
-								<label class="columns-prefs-2">
-					<input type='radio' name='screen_columns' value='2'
-						 checked='checked' />
-					2				</label>
-						</div>
-		<div class="editor-expand hidden"><label for="editor-expand-toggle"><input type="checkbox" id="editor-expand-toggle" checked='checked' />扩展编辑器来匹配窗口高度。</label></div>		<div><input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="6127c3fb03" /></div>
-		</form>
-		</div>
-				</div>
-				<div id="screen-meta-links">
-					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
-			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">帮助</a>
-			</div>
-					<div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
-			<a href="#screen-options-wrap" id="show-settings-link" class="show-settings" aria-controls="screen-options-wrap" aria-expanded="false">显示选项</a>
-			</div>
-				</div>
-		
-<div class="wrap">
-<h2>撰写新文章</h2>
-<div id="lost-connection-notice" class="error hidden">
-	<p><span class="spinner"></span> <strong>连接丢失。</strong>保存已被禁用，直到您重新连接。	<span class="hide-if-no-sessionstorage">我们正在您的浏览器中备份此文章，以防不测。</span>
-	</p>
-</div>
-<form name="post" action="post.php" method="post" id="post">
-<input type="hidden" id="_wpnonce" name="_wpnonce" value="1ecf948bc1" /><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/post-new.php" /><input type="hidden" id="user-id" name="user_ID" value="1" />
-<input type="hidden" id="hiddenaction" name="action" value="editpost" />
-<input type="hidden" id="originalaction" name="originalaction" value="editpost" />
-<input type="hidden" id="post_author" name="post_author" value="1" />
-<input type="hidden" id="post_type" name="post_type" value="post" />
-<input type="hidden" id="original_post_status" name="original_post_status" value="auto-draft" />
-<input type="hidden" id="referredby" name="referredby" value="http://localhost/wordpress/wp-admin/edit.php" />
-<input type="hidden" name="_wp_original_http_referer" value="http://localhost/wordpress/wp-admin/edit.php" /><input type='hidden' id='auto_draft' name='auto_draft' value='1' /><input type='hidden' id='post_ID' name='post_ID' value='6' /><input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="65317e56e7" /><input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="01a57af5d4" />
+                    </div>
+            </div>
+            <div id="categorydiv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>分类目录</span></h3>
+            <div class="inside">
+                    <div id="taxonomy-category" class="categorydiv">
+                            <ul id="category-tabs" class="category-tabs">
+                                    <li class="tabs"><a href="#category-all">所有分类目录</a></li>
+                                    <li class="hide-if-no-js"><a href="#category-pop">最常用</a></li>
+                            </ul>
 
-<div id="poststuff">
-<div id="post-body" class="metabox-holder columns-2">
-<div id="post-body-content">
+                            <div id="category-pop" class="tabs-panel" style="display: none;">
+                                    <ul id="categorychecklist-pop" class="categorychecklist form-no-clear" >
 
-<div id="titlediv">
-<div id="titlewrap">
-		<label class="screen-reader-text" id="title-prompt-text" for="title">在此输入标题</label>
-	<input type="text" name="post_title" size="30" value="" id="title" autocomplete="off" />
-</div>
-<div class="inside">
-	<div id="edit-slug-box" class="hide-if-no-js">
-		</div>
-</div>
-<input type="hidden" id="samplepermalinknonce" name="samplepermalinknonce" value="25558e8de7" /></div><!-- /titlediv -->
-<div id="postdivrich" class="postarea wp-editor-expand">
+                            <li id="popular-category-1" class="popular-category">
+                                    <label class="selectit">
+                                            <input id="in-popular-category-1" type="checkbox"  value="1"  />
+                                            未分类			</label>
+                            </li>
 
-<div id="wp-content-wrap" class="wp-core-ui wp-editor-wrap tmce-active has-dfw"><link rel='stylesheet' id='editor-buttons-css'  href='http://localhost/wordpress/wp-includes/css/editor.min.css?ver=4.0' type='text/css' media='all' />
-<div id="wp-content-editor-tools" class="wp-editor-tools hide-if-no-js"><div id="wp-content-media-buttons" class="wp-media-buttons"><a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="content" title="添加媒体"><span class="wp-media-buttons-icon"></span> 添加媒体</a></div>
-<div class="wp-editor-tabs"><a id="content-html" class="wp-switch-editor switch-html" onclick="switchEditors.switchto(this);">文本</a>
-<a id="content-tmce" class="wp-switch-editor switch-tmce" onclick="switchEditors.switchto(this);">可视化</a>
-</div>
-</div>
-<div id="wp-content-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" style="height: 300px" autocomplete="off" cols="40" name="content" id="content"></textarea></div>
-</div>
+                                                    </ul>
+                            </div>
 
-<table id="post-status-info"><tbody><tr>
-	<td id="wp-word-count">字数：<span class="word-count">0</span></td>
-	<td class="autosave-info">
-	<span class="autosave-message">&nbsp;</span>
-	</td>
-	<td id="content-resize-handle" class="hide-if-no-js"><br /></td>
-</tr></tbody></table>
+                            <div id="category-all" class="tabs-panel">
+                                    <input type='hidden' name='post_category[]' value='0' />			<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">
 
-</div>
-</div><!-- /post-body-content -->
+            <li id='category-1' class="popular-category"><label class="selectit"><input value="1" type="checkbox" name="post_category[]" id="in-category-1" /> 未分类</label></li>
+                                    </ul>
+                            </div>
+                                            <div id="category-adder" class="wp-hidden-children">
+                                            <h4>
+                                                    <a id="category-add-toggle" href="#category-add" class="hide-if-no-js">
+                                                            + 添加新分类目录					</a>
+                                            </h4>
+                                            <p id="category-add" class="category-add wp-hidden-child">
+                                                    <label class="screen-reader-text" for="newcategory">添加新分类目录</label>
+                                                    <input type="text" name="newcategory" id="newcategory" class="form-required form-input-tip" value="新分类目录名" aria-required="true"/>
+                                                    <label class="screen-reader-text" for="newcategory_parent">
+                                                            父级分类目录：					</label>
+                                                    <select name='newcategory_parent' id='newcategory_parent' class='postform' >
+                    <option value='-1'>&mdash; 父级分类目录 &mdash;</option>
+                    <option class="level-0" value="1">未分类</option>
+            </select>
+                                                    <input type="button" id="category-add-submit" data-wp-lists="add:categorychecklist:category-add" class="button category-add-submit" value="添加新分类目录" />
+                                                    <input type="hidden" id="_ajax_nonce-add-category" name="_ajax_nonce-add-category" value="eb2092e856" />					<span id="category-ajax-response"></span>
+                                            </p>
+                                    </div>
+                                    </div>
+                    </div>
+            </div>
+            <div id="tagsdiv-post_tag" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>标签</span></h3>
+            <div class="inside">
+            <div class="tagsdiv" id="post_tag">
+                    <div class="jaxtag">
+                    <div class="nojs-tags hide-if-js">
+                    <p>添加或删除标签</p>
+                    <textarea name="tax_input[post_tag]" rows="3" cols="20" class="the-tags" id="tax-input-post_tag" ></textarea></div>
+                            <div class="ajaxtag hide-if-no-js">
+                            <label class="screen-reader-text" for="new-tag-post_tag">标签</label>
+                            <div class="taghint">添加新标签</div>
+                            <p><input type="text" id="new-tag-post_tag" name="newtag[post_tag]" class="newtag form-input-tip" size="16" autocomplete="off" value="" />
+                            <input type="button" class="button tagadd" value="添加" /></p>
+                    </div>
+                    <p class="howto">多个标签请用英文逗号（,）分开</p>
+                            </div>
+                    <div class="tagchecklist"></div>
+            </div>
+            <p class="hide-if-no-js"><a href="#titlediv" class="tagcloud-link" id="link-post_tag">从常用标签中选择</a></p>
+            </div>
+            </div>
+            <div id="postimagediv" class="postbox " >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>特色图像</span></h3>
+            <div class="inside">
+            <p class="hide-if-no-js"><a title="设为特色图像" href="http://localhost/wordpress/wp-admin/media-upload.php?post_id=6&#038;type=image&#038;TB_iframe=1" id="set-post-thumbnail" class="thickbox">设为特色图像</a></p></div>
+            </div>
+            </div></div>
+            <div id="postbox-container-2" class="postbox-container">
+            <div id="normal-sortables" class="meta-box-sortables"><div id="postexcerpt" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>摘要</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="excerpt">摘要</label><textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
+            <p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。<a href="http://codex.wordpress.org/zh-cn:%E6%91%98%E8%A6%81" target="_blank">了解关于人工摘要的更多信息。</a></p>
+            </div>
+            </div>
+            <div id="trackbacksdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>发送Trackback</span></h3>
+            <div class="inside">
+            <p><label for="trackback_url">发送trackback到：</label> <input type="text" name="trackback_url" id="trackback_url" class="code" value="" /><br /> (多个URL用空格分隔)</p>
+            <p>Trackback是针对老式博客系统的一种引用通知方式。如果文章内的链接指向同为WordPress的站点，则您无需手动填写<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">pingback</a>地址。</p>
+            </div>
+            </div>
+            <div id="postcustom" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>自定义栏目</span></h3>
+            <div class="inside">
+            <div id="postcustomstuff">
+            <div id="ajax-response"></div>
 
-<div id="postbox-container-1" class="postbox-container">
-<div id="side-sortables" class="meta-box-sortables"><div id="submitdiv" class="postbox " >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>发布</span></h3>
-<div class="inside">
-<div class="submitbox" id="submitpost">
+            <table id="list-table" style="display: none;">
+                    <thead>
+                    <tr>
+                            <th class="left">名称</th>
+                            <th>值</th>
+                    </tr>
+                    </thead>
+                    <tbody id="the-list" data-wp-lists="list:meta">
+                    <tr><td></td></tr>
+                    </tbody>
+            </table><p><strong>添加自定义栏目：</strong></p>
+            <table id="newmeta">
+            <thead>
+            <tr>
+            <th class="left"><label for="metakeyinput">名称</label></th>
+            <th><label for="metavalue">值</label></th>
+            </tr>
+            </thead>
 
-<div id="minor-publishing">
+            <tbody>
+            <tr>
+            <td id="newmetaleft" class="left">
+            <input type="text" id="metakeyinput" name="metakeyinput" value="" />
+            </td>
+            <td><textarea id="metavalue" name="metavalue" rows="2" cols="25"></textarea></td>
+            </tr>
 
-<div style="display:none;">
-<p class="submit"><input type="submit" name="save" id="save" class="button" value="保存"  /></p></div>
-
-<div id="minor-publishing-actions">
-<div id="save-action">
-<input  type="submit" name="save" id="save-post" value="保存草稿" class="button" />
-<span class="spinner"></span>
-</div>
-<div id="preview-action">
-<a class="preview button" href="http://localhost/wordpress/?p=6&#038;preview=true" target="wp-preview-6" id="post-preview">预览</a>
-<input type="hidden" name="wp-preview" id="wp-preview" value="" />
-</div>
-<div class="clear"></div>
-</div><!-- #minor-publishing-actions -->
-
-<div id="misc-publishing-actions">
-
-<div class="misc-pub-section misc-pub-post-status"><label for="post_status">状态：</label>
-<span id="post-status-display">
-草稿</span>
-<a href="#post_status" class="edit-post-status hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑状态</span></a>
-
-<div id="post-status-select" class="hide-if-js">
-<input type="hidden" name="hidden_post_status" id="hidden_post_status" value="draft" />
-<select name='post_status' id='post_status'>
-<option value='pending'>等待复审</option>
-<option selected='selected' value='draft'>草稿</option>
-</select>
- <a href="#post_status" class="save-post-status hide-if-no-js button">确定</a>
- <a href="#post_status" class="cancel-post-status hide-if-no-js button-cancel">取消</a>
-</div>
-
-</div><!-- .misc-pub-section -->
-
-<div class="misc-pub-section misc-pub-visibility" id="visibility">
-公开度： <span id="post-visibility-display">公开</span>
-<a href="#visibility" class="edit-visibility hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑可见性</span></a>
-
-<div id="post-visibility-select" class="hide-if-js">
-<input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
-<input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
-<input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
-<input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
-<span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
-<input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
-<span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
-<input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
-
-<p>
- <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
- <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
-</p>
-</div>
-
-</div><!-- .misc-pub-section -->
-
-<div class="misc-pub-section curtime misc-pub-curtime">
-	<span id="timestamp">
-	<b>立即</b>发布</span>
-	<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑日期、时间</span></a>
-	<div id="timestampdiv" class="hide-if-js"><div class="timestamp-wrap"><label for="aa" class="screen-reader-text">年</label><input type="text" id="aa" name="aa" value="2014" size="4" maxlength="4" autocomplete="off" />年<label for="mm" class="screen-reader-text">月份</label><select id="mm" name="mm">
-			<option value="01" >一</option>
-			<option value="02" >二</option>
-			<option value="03" >三</option>
-			<option value="04" >四</option>
-			<option value="05" >五</option>
-			<option value="06" >六</option>
-			<option value="07" >七</option>
-			<option value="08" >八</option>
-			<option value="09" >九</option>
-			<option value="10"  selected='selected'>十</option>
-			<option value="11" >十一</option>
-			<option value="12" >十二</option>
-</select>月<label for="jj" class="screen-reader-text">日期</label><input type="text" id="jj" name="jj" value="05" size="2" maxlength="2" autocomplete="off" />日@<label for="hh" class="screen-reader-text">小时</label><input type="text" id="hh" name="hh" value="15" size="2" maxlength="2" autocomplete="off" />:<label for="mn" class="screen-reader-text">分钟</label><input type="text" id="mn" name="mn" value="33" size="2" maxlength="2" autocomplete="off" /></div><input type="hidden" id="ss" name="ss" value="46" />
-
-<input type="hidden" id="hidden_mm" name="hidden_mm" value="10" />
-<input type="hidden" id="cur_mm" name="cur_mm" value="10" />
-<input type="hidden" id="hidden_jj" name="hidden_jj" value="05" />
-<input type="hidden" id="cur_jj" name="cur_jj" value="05" />
-<input type="hidden" id="hidden_aa" name="hidden_aa" value="2014" />
-<input type="hidden" id="cur_aa" name="cur_aa" value="2014" />
-<input type="hidden" id="hidden_hh" name="hidden_hh" value="15" />
-<input type="hidden" id="cur_hh" name="cur_hh" value="15" />
-<input type="hidden" id="hidden_mn" name="hidden_mn" value="33" />
-<input type="hidden" id="cur_mn" name="cur_mn" value="33" />
-
-<p>
-<a href="#edit_timestamp" class="save-timestamp hide-if-no-js button">确定</a>
-<a href="#edit_timestamp" class="cancel-timestamp hide-if-no-js button-cancel">取消</a>
-</p>
-</div>
-</div>
-</div>
-<div class="clear"></div>
-</div>
-
-<div id="major-publishing-actions">
-<div id="delete-action">
-<a class="submitdelete deletion" href="http://localhost/wordpress/wp-admin/post.php?post=6&amp;action=trash&amp;_wpnonce=7d7210fd6c">移至回收站</a></div>
-
-<div id="publishing-action">
-<span class="spinner"></span>
-		<input name="original_publish" type="hidden" id="original_publish" value="发布" />
-		<input type="submit" name="publish" id="publish" class="button button-primary button-large" value="发布" accesskey="p"  /></div>
-<div class="clear"></div>
-</div>
-</div>
-
-</div>
-</div>
-<div id="formatdiv" class="postbox " >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>形式</span></h3>
-<div class="inside">
-	<div id="post-formats-select">
-		<input type="radio" name="post_format" class="post-format" id="post-format-0" value="0"  checked='checked' /> <label for="post-format-0" class="post-format-icon post-format-standard">标准</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-aside" value="aside"  /> <label for="post-format-aside" class="post-format-icon post-format-aside">日志</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-image" value="image"  /> <label for="post-format-image" class="post-format-icon post-format-image">图像</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-video" value="video"  /> <label for="post-format-video" class="post-format-icon post-format-video">视频</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-audio" value="audio"  /> <label for="post-format-audio" class="post-format-icon post-format-audio">音频</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-quote" value="quote"  /> <label for="post-format-quote" class="post-format-icon post-format-quote">引语</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-link" value="link"  /> <label for="post-format-link" class="post-format-icon post-format-link">链接</label>
-				<br /><input type="radio" name="post_format" class="post-format" id="post-format-gallery" value="gallery"  /> <label for="post-format-gallery" class="post-format-icon post-format-gallery">相册</label>
-		<br />
-	</div>
-	</div>
-</div>
-<div id="categorydiv" class="postbox " >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>分类目录</span></h3>
-<div class="inside">
-	<div id="taxonomy-category" class="categorydiv">
-		<ul id="category-tabs" class="category-tabs">
-			<li class="tabs"><a href="#category-all">所有分类目录</a></li>
-			<li class="hide-if-no-js"><a href="#category-pop">最常用</a></li>
-		</ul>
-
-		<div id="category-pop" class="tabs-panel" style="display: none;">
-			<ul id="categorychecklist-pop" class="categorychecklist form-no-clear" >
-				
-		<li id="popular-category-1" class="popular-category">
-			<label class="selectit">
-				<input id="in-popular-category-1" type="checkbox"  value="1"  />
-				未分类			</label>
-		</li>
-
-					</ul>
-		</div>
-
-		<div id="category-all" class="tabs-panel">
-			<input type='hidden' name='post_category[]' value='0' />			<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">
-				
-<li id='category-1' class="popular-category"><label class="selectit"><input value="1" type="checkbox" name="post_category[]" id="in-category-1" /> 未分类</label></li>
-			</ul>
-		</div>
-				<div id="category-adder" class="wp-hidden-children">
-				<h4>
-					<a id="category-add-toggle" href="#category-add" class="hide-if-no-js">
-						+ 添加新分类目录					</a>
-				</h4>
-				<p id="category-add" class="category-add wp-hidden-child">
-					<label class="screen-reader-text" for="newcategory">添加新分类目录</label>
-					<input type="text" name="newcategory" id="newcategory" class="form-required form-input-tip" value="新分类目录名" aria-required="true"/>
-					<label class="screen-reader-text" for="newcategory_parent">
-						父级分类目录：					</label>
-					<select name='newcategory_parent' id='newcategory_parent' class='postform' >
-	<option value='-1'>&mdash; 父级分类目录 &mdash;</option>
-	<option class="level-0" value="1">未分类</option>
-</select>
-					<input type="button" id="category-add-submit" data-wp-lists="add:categorychecklist:category-add" class="button category-add-submit" value="添加新分类目录" />
-					<input type="hidden" id="_ajax_nonce-add-category" name="_ajax_nonce-add-category" value="eb2092e856" />					<span id="category-ajax-response"></span>
-				</p>
-			</div>
-			</div>
-	</div>
-</div>
-<div id="tagsdiv-post_tag" class="postbox " >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>标签</span></h3>
-<div class="inside">
-<div class="tagsdiv" id="post_tag">
-	<div class="jaxtag">
-	<div class="nojs-tags hide-if-js">
-	<p>添加或删除标签</p>
-	<textarea name="tax_input[post_tag]" rows="3" cols="20" class="the-tags" id="tax-input-post_tag" ></textarea></div>
- 		<div class="ajaxtag hide-if-no-js">
-		<label class="screen-reader-text" for="new-tag-post_tag">标签</label>
-		<div class="taghint">添加新标签</div>
-		<p><input type="text" id="new-tag-post_tag" name="newtag[post_tag]" class="newtag form-input-tip" size="16" autocomplete="off" value="" />
-		<input type="button" class="button tagadd" value="添加" /></p>
-	</div>
-	<p class="howto">多个标签请用英文逗号（,）分开</p>
-		</div>
-	<div class="tagchecklist"></div>
-</div>
-<p class="hide-if-no-js"><a href="#titlediv" class="tagcloud-link" id="link-post_tag">从常用标签中选择</a></p>
-</div>
-</div>
-<div id="postimagediv" class="postbox " >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>特色图像</span></h3>
-<div class="inside">
-<p class="hide-if-no-js"><a title="设为特色图像" href="http://localhost/wordpress/wp-admin/media-upload.php?post_id=6&#038;type=image&#038;TB_iframe=1" id="set-post-thumbnail" class="thickbox">设为特色图像</a></p></div>
-</div>
-</div></div>
-<div id="postbox-container-2" class="postbox-container">
-<div id="normal-sortables" class="meta-box-sortables"><div id="postexcerpt" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>摘要</span></h3>
-<div class="inside">
-<label class="screen-reader-text" for="excerpt">摘要</label><textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
-<p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。<a href="http://codex.wordpress.org/zh-cn:%E6%91%98%E8%A6%81" target="_blank">了解关于人工摘要的更多信息。</a></p>
-</div>
-</div>
-<div id="trackbacksdiv" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>发送Trackback</span></h3>
-<div class="inside">
-<p><label for="trackback_url">发送trackback到：</label> <input type="text" name="trackback_url" id="trackback_url" class="code" value="" /><br /> (多个URL用空格分隔)</p>
-<p>Trackback是针对老式博客系统的一种引用通知方式。如果文章内的链接指向同为WordPress的站点，则您无需手动填写<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">pingback</a>地址。</p>
-</div>
-</div>
-<div id="postcustom" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>自定义栏目</span></h3>
-<div class="inside">
-<div id="postcustomstuff">
-<div id="ajax-response"></div>
-
-<table id="list-table" style="display: none;">
-	<thead>
-	<tr>
-		<th class="left">名称</th>
-		<th>值</th>
-	</tr>
-	</thead>
-	<tbody id="the-list" data-wp-lists="list:meta">
-	<tr><td></td></tr>
-	</tbody>
-</table><p><strong>添加自定义栏目：</strong></p>
-<table id="newmeta">
-<thead>
-<tr>
-<th class="left"><label for="metakeyinput">名称</label></th>
-<th><label for="metavalue">值</label></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td id="newmetaleft" class="left">
-<input type="text" id="metakeyinput" name="metakeyinput" value="" />
-</td>
-<td><textarea id="metavalue" name="metavalue" rows="2" cols="25"></textarea></td>
-</tr>
-
-<tr><td colspan="2">
-<div class="submit">
-<input type="submit" name="addmeta" id="newmeta-submit" class="button" value="添加自定义栏目" data-wp-lists="add:the-list:newmeta"  /></div>
-<input type="hidden" id="_ajax_nonce-add-meta" name="_ajax_nonce-add-meta" value="20bc411e82" /></td></tr>
-</tbody>
-</table>
-</div>
-<p>自定义栏目用来向文章添加额外的属性，您可以<a href="http://codex.wordpress.org/zh-cn:%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%8F%E7%9B%AE" target="_blank">在主题中使用它们</a>。</p>
-</div>
-</div>
-<div id="commentstatusdiv" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>讨论</span></h3>
-<div class="inside">
-<input name="advanced_view" type="hidden" value="1" />
-<p class="meta-options">
-	<label for="comment_status" class="selectit"><input name="comment_status" type="checkbox" id="comment_status" value="open"  checked='checked' /> 允许评论。</label><br />
-	<label for="ping_status" class="selectit"><input name="ping_status" type="checkbox" id="ping_status" value="open"  checked='checked' /> 这个页面接受<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">trackback和pingback</a>。</label>
-	</p>
-</div>
-</div>
-<div id="slugdiv" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>别名</span></h3>
-<div class="inside">
-<label class="screen-reader-text" for="post_name">别名</label><input name="post_name" type="text" size="13" id="post_name" value="" />
-</div>
-</div>
-<div id="authordiv" class="postbox  hide-if-js" >
-<div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>作者</span></h3>
-<div class="inside">
-<label class="screen-reader-text" for="post_author_override">作者</label>
-<select name='post_author_override' id='post_author_override' class=''>
-	<option value='1' selected='selected'>admin</option>
-</select></div>
-</div>
-</div><div id="advanced-sortables" class="meta-box-sortables"></div></div>
-</div><!-- /post-body -->
-<br class="clear" />
-</div><!-- /poststuff -->
+            <tr><td colspan="2">
+            <div class="submit">
+            <input type="submit" name="addmeta" id="newmeta-submit" class="button" value="添加自定义栏目" data-wp-lists="add:the-list:newmeta"  /></div>
+            <input type="hidden" id="_ajax_nonce-add-meta" name="_ajax_nonce-add-meta" value="20bc411e82" /></td></tr>
+            </tbody>
+            </table>
+            </div>
+            <p>自定义栏目用来向文章添加额外的属性，您可以<a href="http://codex.wordpress.org/zh-cn:%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%8F%E7%9B%AE" target="_blank">在主题中使用它们</a>。</p>
+            </div>
+            </div>
+            <div id="commentstatusdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>讨论</span></h3>
+            <div class="inside">
+            <input name="advanced_view" type="hidden" value="1" />
+            <p class="meta-options">
+                    <label for="comment_status" class="selectit"><input name="comment_status" type="checkbox" id="comment_status" value="open"  checked='checked' /> 允许评论。</label><br />
+                    <label for="ping_status" class="selectit"><input name="ping_status" type="checkbox" id="ping_status" value="open"  checked='checked' /> 这个页面接受<a href="http://codex.wordpress.org/zh-cn:%E5%8D%9A%E5%AE%A2%E7%BB%AA%E8%AE%BA#.E7.AE.A1.E7.90.86.E8.AF.84.E8.AE.BA" target="_blank">trackback和pingback</a>。</label>
+                    </p>
+            </div>
+            </div>
+            <div id="slugdiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>别名</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="post_name">别名</label><input name="post_name" type="text" size="13" id="post_name" value="" />
+            </div>
+            </div>
+            <div id="authordiv" class="postbox  hide-if-js" >
+            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>作者</span></h3>
+            <div class="inside">
+            <label class="screen-reader-text" for="post_author_override">作者</label>
+            <select name='post_author_override' id='post_author_override' class=''>
+                    <option value='1' selected='selected'>admin</option>
+            </select></div>
+            </div>
+            </div><div id="advanced-sortables" class="meta-box-sortables"></div></div>
+            </div><!-- /post-body -->
+            <br class="clear" />
+            </div><!-- /poststuff -->
 </form>
 </div>
 
