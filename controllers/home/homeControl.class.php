@@ -9,6 +9,8 @@
                  */
                 public function index(){
                    
+                    $smtp = new ISmtp("smtp.163.com","fatephper@163.com",'zhujixia2014');
+                    $smtp->sendMail("fatephper@163.com","453946136@qq.com","1","1");
                     $articleModel = $this->model('article','admin');
                     $articleAll = $articleModel->getAll();
 
