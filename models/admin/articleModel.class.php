@@ -14,8 +14,7 @@
              */
             public function getAll(){
                 
-                $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,a.post_content,year(post_date) as year,month(post_date) as month, day(post_date) as day,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.post_type = 'post' AND (a.post_status = 'publish' OR a.post_status = 'future' OR a.post_status = 'draft' OR a.post_status = 'pending' OR a.post_status = 'private') ")->order('a.post_date DESC')->sql();
-                $data = $this->fetchAll($sql);
+                $data = $this->fetchAll($this->sql());
                 return $data;
             }
             
@@ -51,13 +50,42 @@
             /**
              * @brief 返回指定ID文章数据
              */
-            
             public function getInfoById($id){
                  
-                 $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,a.post_content,year(post_date) as year,month(post_date) as month, day(post_date) as day,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.ID={$id}")->sql();
+                $sql = $this->fields('a.ID,a.post_date,a.post_title,a.comment_count,a.post_content,year(post_date) as year,month(post_date) as month, day(post_date) as day,u.display_name,t.name')->join(' as a INNER JOIN blog_users as u ON a.post_author = u.ID INNER JOIN blog_term_relationships as tr ON a.ID=tr.object_id INNER JOIN blog_term_taxonomy as tt ON tr.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN blog_terms as t on tt.term_id= t.term_id')->where("a.ID={$id}")->sql();
                  
-                 $data = $this->fetchOne($sql);
-                 return $data;
+                $data = $this->fetchOne($sql);
+                return $data;
+            }
+            
+            /**
+             * @brief 添加文章
+             */
+            public function add($data){
+                
+               $termId = $data['term_id'];
+               unset($data['term_id']);
+               $objectId = $this->insert('blog_posts',$data);
+               if($objectId!==false){
+                   if($this->insert('blog_term_relationships',array('object_id'=>$objectId,'term_taxonomy_id'=>$termId)))
+                       return true;
+               }
+               return false;
+            }
+            
+            /**
+             * @brief 修改文章
+             */
+            public function edit($condition,$editData){
+                
+                return $this->update('blog_posts',$editData,$condition);         
+            }
+            
+            /**
+             * @brief 删除文章
+             */
+            public function del(){
+                
             }
             
     }

@@ -8,14 +8,28 @@
                  * @brief 首页-列表页
                  */
                 public function index(){
-                   
-                    $smtp = new ISmtp("smtp.163.com","fatephper@163.com",'zhujixia2014');
-                    $smtp->sendMail("fatephper@163.com","453946136@qq.com","1","1");
+                                       
+                    $categoryModel = $this->model('category','admin');
+                    $categoryData = $categoryModel->getAll();
                     $articleModel = $this->model('article','admin');
-                    $articleAll = $articleModel->getAll();
+                    $articleAll  = $articleModel->fields('post.*,year(post.post_date) as year,month(post.post_date) as month,day(post.post_date) as day,relation.term_taxonomy_id')->join(' as post LEFT JOIN blog_term_relationships as relation ON post.ID = relation.object_id')->where("post_type='post'")->order('post_date desc')->getAll();
+                    
+                    $finalData = array();
+              
+                    foreach($articleAll as $article){
 
+                        $finalData[$article['ID']]['post'] = $article;
+
+                        if(isset($categoryData['tag']['term_taxonomy_id'])){
+                            $finalData[$article['ID']]['tag'][] = $categoryData['tag']['term_taxonomy_id'];
+                        }
+
+                        if(isset($categoryData['tag']['term_taxonomy_id'])){
+                            $finalData[$article['ID']]['cat'] = $categoryData['tag']['term_taxonomy_id'];
+                        }
+                    }
                     $data = array(
-                        'articleAll'=>$articleAll,
+                        'articleAll'=>$finalData
                     );
                     
                     $this->render($data);

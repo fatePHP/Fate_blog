@@ -20,9 +20,23 @@
                 
         public function getAll($where='1=1'){
             
-            $sql = $this->fields('*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where($where)->order('tt.term_id DESC')->sql();
+            $sql = $this->fields('tt.*,t.*')->join(' as tt INNER JOIN blog_terms  as t ON tt.term_id=t.term_id')->where($where)->order('tt.term_id DESC')->sql();
+            
             $data = $this->fetchAll($sql);
-            return $data;
+                        
+            $categoryFinalData = array();
+            $tagFinalData = array();
+            
+            foreach($data as $category){
+                     if($category['taxonomy']=='category'){
+                         $categoryFinalData[$category['term_taxonomy_id']] = $category;
+                     }
+                     if($category['taxonomy']=='post_tag'){
+                         $tagFinalData[$category['term_taxonomy_id']] = $category;
+                     }
+            }
+            
+            return array('all'=>$data,'tag'=>$tagFinalData,'category'=>$categoryFinalData);
         }
                
         public function getTree($data=array(),$level=0){
@@ -82,8 +96,11 @@
                 $termTaxonomy = $data['termTaxonomy'];
 
                 if($this->update('blog_terms',$term,$condition)){
-                    $this->update('blog_term_taxonomy',$termTaxonomy,$condition);
+                    if($this->update('blog_term_taxonomy',$termTaxonomy,$condition))
+                            return true;
                 }
+                
+                return false;
         }
         
         public function del($id){

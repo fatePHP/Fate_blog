@@ -49,11 +49,13 @@
                                 <{/foreach}>
                         </select>
                         <!-- 分类 筛选 start -->
-                        <select name='cat' id='cat' class='postform' >
-                                <option value='0'>查看所有分类目录</option>
-                                <{foreach:items=$categoryData item=$name key=$key}>
-                                <option class="level-0" value="<{echo:$key}>"><{echo:$name}></option>
-                                <{/foreach}>
+                        <select name='parent' id='parent' class='postform' >
+                            <option value='-1'>无</option>
+                            <{foreach:items=$treeData item=$category key=$k}>
+                                 <option class='level-<{echo:$category["level"]}>' value='<{echo:$category["term_id"]}>'>
+                                     <{echo:$category['name']}>
+                                 </option>
+                            <{/foreach}>
                         </select>
                         <input type="submit" name="filter_action" id="post-query-submit" class="button" value="筛选"  />		
                     </div>
@@ -147,52 +149,61 @@
                 </tfoot>
 
                 <tbody id="the-list">
-                    <{foreach:items=$articleData item=$listData }>
-                        <tr id='post-<{echo:$listData['ID']}>' class="post-1 type-post status-publish format-standard hentry category-uncategorized <{if:$key%2==0}>alternate<{/if}> iedit author-self level-0">
+                    <{code:$i=0}>
+                    <{foreach:items=$articleData key=$ID item=$listData }>
+                        <tr id='post-<{echo:$ID}>' class="post-1 type-post status-publish format-standard hentry category-uncategorized <{if:$i%2==0}>alternate<{/if}> iedit author-self level-0">
                             <!-- 选择框 -->
                             <th class="check-column" scope="row">
                                 <label class="screen-reader-text" for="cb-select-1">选择世界，你好！</label>
-                                <input id='cb-select-<{echo:$listData['ID']}>' type='checkbox' name='article[]' value='<{echo:$listData['ID']}>'>
+                                <input id='cb-select-<{echo:$ID}>' type='checkbox' name='article[]' value='<{echo:$ID}>'>
                                  <div class="locked-indicator"></div>
                             </th>
                             <!-- 标题 -->
                             <td class="post-title page-title column-title">
                                 <strong>
-                                    <a class="row-title" href="<{root:admin/article/edit/id/}><{echo:$listData['ID']}>" title="编辑"><{echo:$listData['post_title']}></a>
+                                    <a class="row-title" href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑"><{echo:$listData['post']['post_title']}></a>
                                 </strong>
                                 <div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>
                                 <div class="row-actions">
                                     <span class='edit'>
-                                        <a href="<{root:admin/article/edit/id/}><{echo:$listData['ID']}>" title="编辑此项目">编辑</a> | 
+                                        <a href="<{root:admin/article/edit/id/}><{echo:$ID}>" title="编辑此项目">编辑</a> | 
                                     </span>
                                     <span class='inline hide-if-no-js'>
                                         <a href="#" class="editinline" title="实时编辑此项目">快速编辑</a> | 
                                     </span>
                                     <span class='trash'>
-                                        <a class='submitdelete' href='<{root:admin/article/recycle/id/}><{echo:$listData['ID']}>'>回收站</a> | 
+                                        <a class='submitdelete' href='<{root:admin/article/recycle/id/}><{echo:$ID}>'>回收站</a> | 
                                     </span>
-                                    <span class='view'><a href="<{root:admin/article/id/}><{echo:$listData['ID']}>" rel="permalink">查看</a></span>
+                                    <span class='view'><a href="<{root:admin/article/id/}><{echo:$ID}>" rel="permalink">查看</a></span>
                                 </div>
                             </td>
                             <!-- 作者 -->
-                            <td class="author column-author"><a href=""><{echo:$listData['display_name']}></a></td>
+                            <td class="author column-author"><a href=""></a></td>
                             <!-- 分类 目录 -->
-                            <td class="categories column-categories"><a href=""><{echo:$listData['name']}></a></td>
+                            <td class="categories column-categories"><a href=""><{echo:$listData['cat']['name']}></a></td>
                             <!-- 标签 -->
-                            <td class="tags column-tags">&#8212;</td>
+                            <td class="tags column-tags">
+                                <{if:empty($listData['tag'])}>
+                                &#8212;
+                                <{else:}>
+                                    <{foreach: items=$listData['tag'] item=$tag}>
+                                    <a href='<{root:admin/article}>'><{echo:$tag['name']}></a>、
+                                    <{/foreach}>
+                                <{/if}>
+                            </td>
                             <!-- 评论 -->
                             <td class="comments column-comments">
                                 <div class="post-com-count-wrapper">
                                     <a href='' class='post-com-count'>
-                                        <span class='comment-count'><{echo:$listData['comment_count']}></span
+                                        <span class='comment-count'><{echo:$listData['post']['comment_count']}></span>
                                     </a>		
                                 </div>
                             </td>
                             <!-- 日期 -->
-                            <td class="date column-date"><abbr title="<{echo:$listData['post_date']}>"><{echo:$listData['post_date']}></abbr><br />已发布</td>
+                            <td class="date column-date"><abbr title="<{echo:$listData['post']['post_date']}>"><{echo:$listData['post']['post_date']}></abbr><br />已发布</td>
                         </tr>
+                    <{code:$i++}>
                     <{/foreach}>
-                    
                   </tbody>
             </table>
 
@@ -220,14 +231,9 @@
             </div>
 
 </form>
-
-
-
 <div id="ajax-response"></div>
 <br class="clear" />
 </div>
-
-
 <div class="clear"></div></div>
 <div class="clear"></div>
 

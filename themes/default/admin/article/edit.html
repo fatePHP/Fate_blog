@@ -1,26 +1,38 @@
+<{js:common/bdeditor/umeditor.config.js}>
+<{js:common/bdeditor/umeditor.min.js}>
+<{js:common/bdeditor/lang/zh-cn/zh-cn.js}>
 <div id="wpbody">
+   <div id="wpbody-content" aria-label="主内容" tabindex="0">	
     <div class="wrap">
         <h2>撰写新文章</h2>
-        <div id="lost-connection-notice" class="error hidden">
-            <p>
-                <span class="spinner"></span> <strong>连接丢失。</strong>保存已被禁用，直到您重新连接。	
-               <span class="hide-if-no-sessionstorage">我们正在您的浏览器中备份此文章，以防不测。</span>
-            </p>
-        </div>
-        <form name="post" action="post.php" method="post" id="post">
-            <input type="hidden" id="originalaction" name="originalaction" value="editpost" />
-            <input type="hidden" id="post_author" name="post_author" value="1" />
-            <input type="hidden" id="post_type" name="post_type" value="post" />
-            <input type="hidden" id="original_post_status" name="original_post_status" value="auto-draft" />
-            <input type="hidden" id="referredby" name="referredby" value="http://localhost/wordpress/wp-admin/edit.php" />
-            <input type="hidden" name="_wp_original_http_referer" value="http://localhost/wordpress/wp-admin/edit.php" />
-            <input type='hidden' id='auto_draft' name='auto_draft' value='1' />
-            <input type='hidden' id='post_ID' name='post_ID' value='6' />
-            <input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="65317e56e7" />
-            <input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="01a57af5d4" />
-
+        <form name="post" action="" method="post" >
+            <input type="hidden" name="post_type" value="post" />
+            <input type="hidden" name="doAdd" value="1">
             <div id="poststuff">
              <div id="post-body" class="metabox-holder columns-2">
+               <!-- 正文 start -->
+               <div id="post-body-content">
+                    <!-- 标题 start -->
+                    <div id="titlediv">
+                        <div id="titlewrap">
+                            <label class="screen-reader-text" id="title-prompt-text" for="title">在此输入标题</label>
+                            <input type="text" name="post_title" size="30" value="" id="title" autocomplete="off" />
+                        </div>
+                    </div>
+                    <!-- 标题 end -->
+                    <!-- 内容 start -->
+                    <{css:bdeditor/umeditor.css}>
+                    <div id="postdivrich" class="postarea wp-editor-expand">
+                        <textarea id="post_content" style="width:99.7%" name="post_content"></textarea>
+                    </div>
+                    <script type="text/javascript">
+                        //实例化编辑器
+                        var um = UM.getEditor('post_content');
+                    </script>
+                    <!-- 内容 end -->
+               </div>
+               <!-- 正文 end -->
+               <!-- 右侧 菜单 start -->
                <div id="postbox-container-1" class="postbox-container">
                 <div id="side-sortables" class="meta-box-sortables">
                   <div id="submitdiv" class="postbox " >
@@ -67,27 +79,28 @@
                                     </div>
                                  </div>
 
-            <div class="misc-pub-section misc-pub-visibility" id="visibility">
-            公开度： <span id="post-visibility-display">公开</span>
-            <a href="#visibility" class="edit-visibility hide-if-no-js"><span aria-hidden="true">编辑</span> <span class="screen-reader-text">编辑可见性</span></a>
+                                <div class="misc-pub-section misc-pub-visibility" id="visibility">
+                                公开度： <span id="post-visibility-display">公开</span>
+                                <a href="#visibility" class="edit-visibility hide-if-no-js">
+                                    <span aria-hidden="true">编辑</span> 
+                                    <span class="screen-reader-text">编辑可见性</span>
+                                </a>
+                                <div id="post-visibility-select" class="hide-if-js">
+                                <input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
+                                <input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
+                                <input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
+                                <input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
+                                <span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
+                                <input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
+                                <span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
+                                <input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
 
-            <div id="post-visibility-select" class="hide-if-js">
-            <input type="hidden" name="hidden_post_password" id="hidden-post-password" value="" />
-            <input type="checkbox" style="display:none" name="hidden_post_sticky" id="hidden-post-sticky" value="sticky"  />
-            <input type="hidden" name="hidden_post_visibility" id="hidden-post-visibility" value="public" />
-            <input type="radio" name="visibility" id="visibility-radio-public" value="public"  checked='checked' /> <label for="visibility-radio-public" class="selectit">公开</label><br />
-            <span id="sticky-span"><input id="sticky" name="sticky" type="checkbox" value="sticky"  /> <label for="sticky" class="selectit">将文章置于首页顶端</label><br /></span>
-            <input type="radio" name="visibility" id="visibility-radio-password" value="password"  /> <label for="visibility-radio-password" class="selectit">密码保护</label><br />
-            <span id="password-span"><label for="post_password">密码：</label> <input type="text" name="post_password" id="post_password" value=""  maxlength="20" /><br /></span>
-            <input type="radio" name="visibility" id="visibility-radio-private" value="private"  /> <label for="visibility-radio-private" class="selectit">私密</label><br />
-
-            <p>
-             <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
-             <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
-            </p>
-            </div>
-
-            </div><!-- .misc-pub-section -->
+                                <p>
+                                 <a href="#visibility" class="save-post-visibility hide-if-no-js button">确定</a>
+                                 <a href="#visibility" class="cancel-post-visibility hide-if-no-js button-cancel">取消</a>
+                                </p>
+                                </div>
+                                </div>
 
             <div class="misc-pub-section curtime misc-pub-curtime">
                     <span id="timestamp">
@@ -233,21 +246,27 @@
             <div class="inside">
             <p class="hide-if-no-js"><a title="设为特色图像" href="http://localhost/wordpress/wp-admin/media-upload.php?post_id=6&#038;type=image&#038;TB_iframe=1" id="set-post-thumbnail" class="thickbox">设为特色图像</a></p></div>
             </div>
-            </div></div>
+            </div>
+            </div>
+            <!-- 左侧摘要 start -->
             <div id="postbox-container-2" class="postbox-container">
-            <div id="normal-sortables" class="meta-box-sortables"><div id="postexcerpt" class="postbox  hide-if-js" >
-            <div class="handlediv" title="点击以切换"><br /></div><h3 class='hndle'><span>摘要</span></h3>
-            <div class="inside">
-            <label class="screen-reader-text" for="excerpt">摘要</label><textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
-            <p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。<a href="http://codex.wordpress.org/zh-cn:%E6%91%98%E8%A6%81" target="_blank">了解关于人工摘要的更多信息。</a></p>
+                <div id="normal-sortables" class="meta-box-sortables">
+                   <div id="postexcerpt" class="postbox  hide-if-js" >
+                    <div class="handlediv" title="点击以切换"><br /></div>
+                    <h3 class='hndle'><span>摘要</span></h3>
+                    <div class="inside">
+                    <label class="screen-reader-text" for="excerpt">摘要</label>
+                    <textarea rows="1" cols="40" name="excerpt" id="excerpt"></textarea>
+                    <p>摘要是您可以手动添加的内容概要，一些主题会用到这些文字。 </p>
+                    </div>
+                   </div>
+                </div>
+                <div id="advanced-sortables" class="meta-box-sortables"></div>
             </div>
+            <!-- 左侧摘要 end -->
             </div>
-                
-
-            </div><div id="advanced-sortables" class="meta-box-sortables"></div></div>
-            </div><!-- /post-body -->
             <br class="clear" />
-            </div><!-- /poststuff -->
+            </div>
 </form>
 </div>
 
@@ -301,12 +320,10 @@
 	<input type="hidden" id="_ajax_nonce-replyto-comment" name="_ajax_nonce-replyto-comment" value="72f7c3da7b" /><input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="f88296372d" /></td></tr></tbody></table>
 </form>
 
-<script type="text/javascript">
-try{document.post.title.focus();}catch(e){}
-</script>
+
 
 <div class="clear"></div></div><!-- wpbody-content -->
-<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div></div><<!-- wpbody -->
 <div class="clear"></div>
 
 
@@ -1551,101 +1568,7 @@ try{document.post.title.focus();}catch(e){}
 	</div>
 	</div>
 	
-<script type='text/javascript'>
-/* <![CDATA[ */
-var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var wpAjax = {"noPerm":"\u60a8\u65e0\u6743\u6267\u884c\u6b64\u64cd\u4f5c\u3002","broken":"\u53d1\u751f\u4e86\u65e0\u6cd5\u8bc6\u522b\u7684\u9519\u8bef\u3002"};var autosaveL10n = {"autosaveInterval":"60","blog_id":"1"};var heartbeatSettings = {"nonce":"c63b35be06","suspension":"disable"};var postL10n = {"ok":"\u786e\u5b9a","cancel":"\u53d6\u6d88","publishOn":"\u53d1\u5e03\u4e8e\uff1a","publishOnFuture":"\u5b9a\u65f6\uff1a","publishOnPast":"\u53d1\u5e03\u4e8e\uff1a","dateFormat":"%3$s\u5e74%1$s\u6708%2$s\u65e5@%4$s:%5$s","showcomm":"\u663e\u793a\u66f4\u591a\u8bc4\u8bba","endcomm":"\u5df2\u65e0\u66f4\u591a\u8bc4\u8bba\u3002","publish":"\u53d1\u5e03","schedule":"\u5b9a\u65f6","update":"\u66f4\u65b0","savePending":"\u4fdd\u5b58\u5e76\u63d0\u8bf7\u5ba1\u6838","saveDraft":"\u4fdd\u5b58\u8349\u7a3f","private":"\u79c1\u5bc6","public":"\u516c\u5f00","publicSticky":"\u516c\u5f00\u3001\u7f6e\u9876","password":"\u5bc6\u7801\u4fdd\u62a4","privatelyPublished":"\u79c1\u5bc6\u3001\u5df2\u53d1\u5e03","published":"\u5df2\u53d1\u5e03","comma":"\u3001","saveAlert":"\u79bb\u5f00\u8fd9\u4e2a\u9875\u9762\uff0c\u60a8\u6240\u505a\u7684\u66f4\u6539\u5c06\u4e22\u5931\u3002","savingText":"\u6b63\u5728\u4fdd\u5b58\u8349\u7a3f\u2026"};var thickboxL10n = {"next":"\u4e0b\u4e00\u9875 >","prev":"< \u4e0a\u4e00\u9875","image":"\u56fe\u50cf","of":"\/","close":"\u5173\u95ed","noiframes":"\u8fd9\u4e2a\u529f\u80fd\u9700\u8981iframe\u7684\u652f\u6301\u3002\u60a8\u53ef\u80fd\u7981\u6b62\u4e86iframe\u7684\u663e\u793a\uff0c\u6216\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u6b64\u529f\u80fd\u3002","loadingAnimation":"http:\/\/localhost\/wordpress\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};var _wpUtilSettings = {"ajax":{"url":"\/wordpress\/wp-admin\/admin-ajax.php"}};var _wpMediaModelsL10n = {"settings":{"ajaxurl":"\/wordpress\/wp-admin\/admin-ajax.php","post":{"id":0}}};var pluploadL10n = {"queue_limit_exceeded":"\u60a8\u5411\u961f\u5217\u4e2d\u6dfb\u52a0\u7684\u6587\u4ef6\u8fc7\u591a\u3002","file_exceeds_size_limit":"%s\u8d85\u8fc7\u4e86\u7ad9\u70b9\u7684\u6700\u5927\u4e0a\u4f20\u9650\u5236\u3002","zero_byte_file":"\u6587\u4ef6\u4e3a\u7a7a\uff0c\u8bf7\u9009\u62e9\u5176\u5b83\u6587\u4ef6\u3002","invalid_filetype":"\u4e0d\u5141\u8bb8\u4e0a\u4f20\u8be5\u7c7b\u578b\u7684\u6587\u4ef6\uff0c\u8bf7\u9009\u62e9\u5176\u5b83\u6587\u4ef6\u3002","not_an_image":"\u8be5\u6587\u4ef6\u4e0d\u662f\u56fe\u50cf\uff0c\u8bf7\u4f7f\u7528\u5176\u5b83\u6587\u4ef6\u3002","image_memory_exceeded":"\u8fbe\u5230\u5185\u5b58\u9650\u5236\uff0c\u8bf7\u4f7f\u7528\u5c0f\u4e00\u4e9b\u7684\u6587\u4ef6\u3002","image_dimensions_exceeded":"\u8be5\u6587\u4ef6\u8d85\u8fc7\u4e86\u6700\u5927\u5927\u5c0f\uff0c\u8bf7\u4f7f\u7528\u5176\u5b83\u6587\u4ef6\u3002","default_error":"\u4e0a\u4f20\u65f6\u53d1\u751f\u4e86\u9519\u8bef\u3002\u8bf7\u7a0d\u540e\u518d\u8bd5\u3002","missing_upload_url":"\u914d\u7f6e\u6709\u8bef\u3002\u8bf7\u8054\u7cfb\u60a8\u7684\u670d\u52a1\u5668\u7ba1\u7406\u5458\u3002","upload_limit_exceeded":"\u60a8\u53ea\u80fd\u4e0a\u4f20\u4e00\u4e2a\u6587\u4ef6\u3002","http_error":"HTTP\u9519\u8bef\u3002","upload_failed":"\u4e0a\u4f20\u5931\u8d25\u3002","big_upload_failed":"\u8bf7\u5c1d\u8bd5\u4f7f\u7528%1$s\u6807\u51c6\u7684\u6d4f\u89c8\u5668\u4e0a\u4f20\u5de5\u5177%2$s\u6765\u4e0a\u4f20\u8fd9\u4e2a\u6587\u4ef6\u3002","big_upload_queued":"%s\u8d85\u51fa\u4e86\u60a8\u6d4f\u89c8\u5668\u5bf9\u9ad8\u7ea7\u591a\u6587\u4ef6\u4e0a\u4f20\u5de5\u5177\u6240\u505a\u7684\u5927\u5c0f\u9650\u5236\u3002","io_error":"IO\u9519\u8bef\u3002","security_error":"\u5b89\u5168\u9519\u8bef\u3002","file_cancelled":"\u6587\u4ef6\u5df2\u53d6\u6d88\u3002","upload_stopped":"\u4e0a\u4f20\u505c\u6b62\u3002","dismiss":"\u4e0d\u518d\u663e\u793a","crunching":"\u5904\u7406\u4e2d\u2026","deleted":"\u79fb\u52a8\u5230\u56de\u6536\u7ad9\u3002","error_uploading":"\u201c%s\u201d\u4e0a\u4f20\u5931\u8d25\u3002"};
-var _wpPluploadSettings = {"defaults":{"runtimes":"html5,flash,silverlight,html4","file_data_name":"async-upload","url":"\/wordpress\/wp-admin\/async-upload.php","flash_swf_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/localhost\/wordpress\/wp-includes\/js\/plupload\/plupload.silverlight.xap","filters":{"max_file_size":"2097152b"},"multipart_params":{"action":"upload-attachment","_wpnonce":"becb427236"}},"browser":{"mobile":false,"supported":true},"limitExceeded":false};var mejsL10n = {"language":"zh","strings":{"Close":"\u5173\u95ed","Fullscreen":"\u5168\u5c4f","Download File":"\u4e0b\u8f7d\u6587\u4ef6","Download Video":"\u4e0b\u8f7d\u89c6\u9891","Play\/Pause":"\u64ad\u653e\/\u6682\u505c","Mute Toggle":"\u5207\u6362\u9759\u97f3","None":"\u65e0","Turn off Fullscreen":"\u5173\u95ed\u5168\u5c4f","Go Fullscreen":"\u5168\u5c4f","Unmute":"\u53d6\u6d88\u9759\u97f3","Mute":"\u9759\u97f3","Captions\/Subtitles":"\u5b57\u5e55"}};
-var _wpmejsSettings = {"pluginPath":"\/wordpress\/wp-includes\/js\/mediaelement\/"};var _wpMediaViewsL10n = {"url":"URL","addMedia":"\u6dfb\u52a0\u5a92\u4f53","search":"\u641c\u7d22","select":"\u9009\u62e9","cancel":"\u53d6\u6d88","update":"\u66f4\u65b0","replace":"\u66ff\u6362","remove":"\u79fb\u9664","back":"\u8fd4\u56de","selected":"\u5df2\u9009%d\u4e2a","dragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u56fe\u50cf\u3002","uploadFilesTitle":"\u4e0a\u4f20\u6587\u4ef6","uploadImagesTitle":"\u4e0a\u4f20\u6587\u4ef6","mediaLibraryTitle":"\u5a92\u4f53\u5e93","insertMediaTitle":"\u63d2\u5165\u591a\u5a92\u4f53","createNewGallery":"\u521b\u5efa\u65b0\u76f8\u518c","createNewPlaylist":"\u521b\u5efa\u65b0\u7684\u64ad\u653e\u5217\u8868","createNewVideoPlaylist":"\u521b\u5efa\u65b0\u7684\u89c6\u9891\u64ad\u653e\u5217\u8868","returnToLibrary":"\u2190 \u56de\u5230\u5a92\u4f53\u5e93","allMediaItems":"\u6240\u6709\u591a\u5a92\u4f53\u9879\u76ee","allMediaTypes":"\u6240\u6709\u5a92\u4f53\u7c7b\u578b","allDates":"\u5168\u90e8\u65e5\u671f","noItemsFound":"\u627e\u4e0d\u5230\u6761\u76ee\u3002","insertIntoPost":"\u63d2\u5165\u81f3\u6587\u7ae0","unattached":"\u5c1a\u672a\u9644\u52a0","trash":"\u56de\u6536\u7ad9","uploadedToThisPost":"\u4e0a\u4f20\u5230\u672c\u6587\u7ae0\u7684","warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u6761\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","warnBulkDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u8fd9\u4e9b\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","warnBulkTrash":"\u60a8\u5c06\u5220\u9664\u8fd9\u4e9b\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002","bulkSelect":"\u6279\u91cf\u9009\u62e9","cancelSelection":"\u53d6\u6d88\u9009\u62e9","trashSelected":"\u5220\u9664\u6240\u9009","untrashSelected":"\u8fd8\u539f\u6240\u9009","deleteSelected":"\u6c38\u4e45\u5220\u9664\u6240\u9009","deletePermanently":"\u6c38\u4e45\u5220\u9664","apply":"\u5e94\u7528","filterByDate":"\u6309\u65e5\u671f\u7b5b\u9009","filterByType":"\u6309\u7c7b\u578b\u7b5b\u9009","searchMediaLabel":"\u641c\u7d22\u5a92\u4f53","attachmentDetails":"\u9644\u4ef6\u8be6\u60c5","insertFromUrlTitle":"\u4eceURL\u63d2\u5165","setFeaturedImageTitle":"\u8bbe\u4e3a\u7279\u8272\u56fe\u50cf","setFeaturedImage":"\u8bbe\u4e3a\u7279\u8272\u56fe\u50cf","createGalleryTitle":"\u521b\u5efa\u76f8\u518c","editGalleryTitle":"\u7f16\u8f91\u76f8\u518c","cancelGalleryTitle":"\u2190 \u53d6\u6d88\u76f8\u518c","insertGallery":"\u63d2\u5165\u76f8\u518c","updateGallery":"\u66f4\u65b0\u76f8\u518c","addToGallery":"\u6dfb\u52a0\u81f3\u76f8\u518c","addToGalleryTitle":"\u6dfb\u52a0\u81f3\u76f8\u518c","reverseOrder":"\u53cd\u8f6c\u987a\u5e8f","imageDetailsTitle":"\u56fe\u50cf\u8be6\u60c5","imageReplaceTitle":"\u66ff\u6362\u56fe\u50cf","imageDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","editImage":"\u7f16\u8f91\u56fe\u50cf","chooseImage":"\u9009\u62e9\u56fe\u50cf","selectAndCrop":"\u9009\u62e9\u5e76\u88c1\u526a","skipCropping":"\u8df3\u8fc7\u88c1\u526a","cropImage":"\u88c1\u526a\u56fe\u50cf","cropYourImage":"\u88c1\u526a\u60a8\u7684\u56fe\u7247","cropping":"\u88c1\u526a\u4e2d\u2026","suggestedDimensions":"\u63a8\u8350\u7684\u56fe\u50cf\u5c3a\u5bf8\uff1a","cropError":"\u5728\u88c1\u526a\u60a8\u7684\u56fe\u50cf\u65f6\u53d1\u751f\u4e86\u9519\u8bef\u3002","audioDetailsTitle":"\u97f3\u9891\u8be6\u60c5","audioReplaceTitle":"\u66ff\u6362\u97f3\u9891","audioAddSourceTitle":"\u6dfb\u52a0\u97f3\u9891\u6e90","audioDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","videoDetailsTitle":"\u89c6\u9891\u8be6\u60c5","videoReplaceTitle":"\u66ff\u6362\u89c6\u9891","videoAddSourceTitle":"\u6dfb\u52a0\u89c6\u9891\u6e90","videoDetailsCancel":"\u53d6\u6d88\u7f16\u8f91","videoSelectPosterImageTitle":"\u9009\u62e9\u6d77\u62a5\u56fe\u50cf","videoAddTrackTitle":"\u6dfb\u52a0\u5b57\u5e55","playlistDragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u66f2\u76ee\u3002","createPlaylistTitle":"\u521b\u5efa\u97f3\u9891\u64ad\u653e\u5217\u8868","editPlaylistTitle":"\u7f16\u8f91\u97f3\u9891\u64ad\u653e\u5217\u8868","cancelPlaylistTitle":"\u2190 \u53d6\u6d88\u97f3\u9891\u64ad\u653e\u5217\u8868","insertPlaylist":"\u63d2\u5165\u97f3\u9891\u64ad\u653e\u5217\u8868","updatePlaylist":"\u66f4\u65b0\u97f3\u9891\u64ad\u653e\u5217\u8868","addToPlaylist":"\u6dfb\u52a0\u5230\u97f3\u9891\u64ad\u653e\u5217\u8868","addToPlaylistTitle":"\u6dfb\u52a0\u5230\u97f3\u9891\u64ad\u653e\u5217\u8868","videoPlaylistDragInfo":"\u62d6\u653e\u6765\u6392\u5e8f\u89c6\u9891\u3002","createVideoPlaylistTitle":"\u521b\u5efa\u89c6\u9891\u64ad\u653e\u5217\u8868","editVideoPlaylistTitle":"\u7f16\u8f91\u89c6\u9891\u64ad\u653e\u5217\u8868","cancelVideoPlaylistTitle":"\u2190 \u53d6\u6d88\u89c6\u9891\u64ad\u653e\u5217\u8868","insertVideoPlaylist":"\u63d2\u5165\u89c6\u9891\u64ad\u653e\u5217\u8868","updateVideoPlaylist":"\u66f4\u65b0\u89c6\u9891\u64ad\u653e\u5217\u8868","addToVideoPlaylist":"\u6dfb\u52a0\u5230\u89c6\u9891\u64ad\u653e\u5217\u8868","addToVideoPlaylistTitle":"\u6dfb\u52a0\u5230\u89c6\u9891\u64ad\u653e\u5217\u8868","editMetadata":"\u7f16\u8f91\u5143\u6570\u636e","noMedia":"\u6ca1\u6709\u627e\u5230\u5a92\u4f53\u9644\u4ef6\u3002","settings":{"tabs":[],"tabUrl":"http:\/\/localhost\/wordpress\/wp-admin\/media-upload.php?chromeless=1","mimeTypes":{"image":"\u56fe\u50cf","audio":"\u97f3\u9891","video":"\u89c6\u9891"},"captions":true,"nonce":{"sendToEditor":"531df2ba8f"},"post":{"id":6,"nonce":"1ecf948bc1","featuredImageId":-1},"defaultProps":{"link":"file","align":"","size":""},"attachmentCounts":{"audio":0,"video":0},"embedExts":["mp3","ogg","wma","m4a","wav","mp4","m4v","webm","ogv","wmv","flv"],"embedMimes":{"mp3":"audio\/mpeg","ogg":"audio\/ogg","wma":"audio\/x-ms-wma","m4a":"audio\/mpeg","wav":"audio\/wav","mp4":"video\/mp4","m4v":"video\/mp4","webm":"video\/webm","ogv":"video\/ogg","wmv":"video\/x-ms-wmv","flv":"video\/x-flv"},"contentWidth":474,"months":[],"mediaTrash":0}};var imageEditL10n = {"error":"\u65e0\u6cd5\u52a0\u8f7d\u9884\u89c8\u56fe\u7247\u3002\u8bf7\u5c1d\u8bd5\u5237\u65b0\u9875\u9762\u3002"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","fullscreen":"\u5168\u5c4f","toggleFullscreen":"\u5207\u6362\u5168\u5c4f\u6a21\u5f0f","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411"};var wpLinkL10n = {"title":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","update":"\u66f4\u65b0","save":"\u6dfb\u52a0\u94fe\u63a5","noTitle":"(\u65e0\u6807\u9898)","noMatchesFound":"\u627e\u4e0d\u5230\u7b26\u5408\u6761\u4ef6\u7684\u9879\u76ee\u3002"};/* ]]> */
-</script>
-<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,schedule,wp-ajax-response,autosave,suggest,jquery-color,wp-lists,jquery-ui-core,jquery-ui-widget,jq&amp;load%5B%5D=uery-ui-mouse,jquery-ui-sortable,postbox,heartbeat,post,editor-expand,thickbox,underscore,shortcode,backbone,wp-util,wp-backbone&amp;load%5B%5D=,media-models,wp-plupload,mediaelement,wp-mediaelement,media-views,media-editor,media-audiovideo,wp-playlist,mce-view,imgareasel&amp;load%5B%5D=ect,image-edit,svg-painter,wp-auth-check,editor,quicktags,wplink,wp-fullscreen,media-upload&amp;ver=4.0'></script>
-<script type='text/javascript' src='http://localhost/wordpress/wp-content/languages/zh_CN-word-count.js?ver=20120605'></script>
-
-		<script type="text/javascript">
-		tinyMCEPreInit = {
-			baseURL: "http://localhost/wordpress/wp-includes/js/tinymce",
-			suffix: ".min",
-			dragDropUpload: true,			mceInit: {'content':{theme:"modern",skin:"lightgray",language:"zh",formats:{
-						alignleft: [
-							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'left'}},
-							{selector: 'img,table,dl.wp-caption', classes: 'alignleft'}
-						],
-						aligncenter: [
-							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'center'}},
-							{selector: 'img,table,dl.wp-caption', classes: 'aligncenter'}
-						],
-						alignright: [
-							{selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li', styles: {textAlign:'right'}},
-							{selector: 'img,table,dl.wp-caption', classes: 'alignright'}
-						],
-						strikethrough: {inline: 'del'}
-					},relative_urls:false,remove_script_host:false,convert_urls:false,browser_spellcheck:true,fix_list_elements:true,entities:"38,amp,60,lt,62,gt",entity_encoding:"raw",keep_styles:false,preview_styles:"font-family font-size font-weight font-style text-decoration text-transform",wpeditimage_disable_captions:false,wpeditimage_html5_captions:true,plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,wpfullscreen",content_css:"http://localhost/wordpress/wp-includes/css/dashicons.min.css?ver=4.0,http://localhost/wordpress/wp-includes/js/tinymce/skins/wordpress/wp-content.css?ver=4.0,//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic,http://localhost/wordpress/wp-content/themes/twentyfourteen/css/editor-style.css,http://localhost/wordpress/wp-content/themes/twentyfourteen/genericons/genericons.css",selector:"#content",resize:false,menubar:false,wpautop:true,indent:false,toolbar1:"bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,wp_fullscreen,wp_adv",toolbar2:"formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help",toolbar3:"",toolbar4:"",tabfocus_elements:"insert-media-button,save-post",body_class:"content post-type-post post-status-auto-draft post-format-standard",wp_autoresize_on:true,add_unload_trigger:false}},
-			qtInit: {'content':{id:"content",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,more,close,fullscreen"},'replycontent':{id:"replycontent",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,close"}},
-			ref: {plugins:"charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen,wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,wpfullscreen",theme:"modern",language:"zh"},
-			load_ext: function(url,lang){var sl=tinymce.ScriptLoader;sl.markDone(url+'/langs/'+lang+'.js');sl.markDone(url+'/langs/'+lang+'_dlg.js');}
-		};
-		</script>
-		<script type='text/javascript' src='http://localhost/wordpress/wp-includes/js/tinymce/wp-tinymce.php?c=1&amp;ver=4104-20140822'></script>
-<script type='text/javascript'>
-tinymce.addI18n( 'zh', {"New document":"\u65b0\u6587\u6863","Formats":"\u683c\u5f0f","Headings":"\u6807\u9898","Heading 1":"\u4e00\u7ea7\u6807\u9898","Heading 2":"\u4e8c\u7ea7\u6807\u9898","Heading 3":"\u4e09\u7ea7\u6807\u9898","Heading 4":"\u56db\u7ea7\u6807\u9898","Heading 5":"\u4e94\u7ea7\u6807\u9898","Heading 6":"\u516d\u7ea7\u6807\u9898","Blocks":"\u5757","Paragraph":"\u6bb5\u843d","Blockquote":"\u5757\u5f15\u7528","Div":"Div","Pre":"Pre","Address":"\u5730\u5740","Inline":"\u884c\u5185","Underline":"\u4e0b\u5212\u7ebf","Strikethrough":"\u5220\u9664\u7ebf","Subscript":"\u4e0b\u6807","Superscript":"\u4e0a\u6807","Clear formatting":"\u6e05\u9664\u683c\u5f0f","Bold":"\u7c97\u4f53","Italic":"\u659c\u4f53","Code":"\u4ee3\u7801","Source code":"\u6e90\u4ee3\u7801","Font Family":"\u5b57\u4f53","Font Sizes":"\u5b57\u53f7","Align center":"\u5c45\u4e2d\u5bf9\u9f50","Align right":"\u53f3\u5bf9\u9f50","Align left":"\u5de6\u5bf9\u9f50","Justify":"\u4e24\u7aef\u5bf9\u9f50","Increase indent":"\u589e\u52a0\u7f29\u8fdb\u91cf","Decrease indent":"\u51cf\u5c11\u7f29\u8fdb\u91cf","Cut":"\u526a\u5207","Copy":"\u590d\u5236","Paste":"\u7c98\u5e16","Select all":"\u5168\u9009","Undo":"\u64a4\u9500","Redo":"\u91cd\u505a","Ok":"\u786e\u5b9a","Cancel":"\u53d6\u6d88","Close":"\u5173\u95ed","Visual aids":"\u89c6\u89c9\u8f85\u52a9","Bullet list":"\u9879\u76ee\u7b26\u53f7\u5217\u8868","Numbered list":"\u7f16\u53f7\u5217\u8868","Square":"\u5b9e\u5fc3\u65b9\u5757","Default":"\u9ed8\u8ba4","Circle":"\u5706\u5708","Disc":"\u5706\u70b9","Lower Greek":"\u5c0f\u5199\u5e0c\u814a\u5b57\u6bcd","Lower Alpha":"\u5c0f\u5199\u82f1\u6587\u5b57\u6bcd","Upper Alpha":"\u5927\u5199\u82f1\u6587\u5b57\u6bcd","Upper Roman":"\u5927\u5199\u7f57\u9a6c\u6570\u5b57","Lower Roman":"\u5c0f\u5199\u7f57\u9a6c\u6570\u5b57","Name":"\u540d\u5b57","Anchor":"\u951a","Anchors":"\u951a","Document properties":"\u6587\u6863\u5c5e\u6027","Robots":"\u673a\u5668\u4eba","Title":"\u6807\u9898","Keywords":"\u5173\u952e\u8bcd","Encoding":"\u7f16\u7801","Description":"\u56fe\u50cf\u63cf\u8ff0","Author":"\u4f5c\u8005","Insert\/edit image":"\u63d2\u5165\u6216\u7f16\u8f91\u56fe\u50cf","General":"\u5e38\u89c4","Advanced":"\u9ad8\u7ea7","Source":"\u6e90","Border":"\u8fb9\u6846","Constrain proportions":"\u4fdd\u6301\u957f\u5bbd\u6bd4","Vertical space":"\u5782\u76f4\u95f4\u9694","Image description":"\u56fe\u50cf\u63cf\u8ff0","Style":"\u6837\u5f0f","Dimensions":"\u5c3a\u5bf8","Insert image":"\u63d2\u5165\u56fe\u50cf","Insert date\/time":"\u63d2\u5165\u65e5\u671f\u3001\u65f6\u95f4","Insert\/edit video":"\u63d2\u5165\u6216\u7f16\u8f91\u89c6\u9891","Poster":"\u6d77\u62a5","Alternative source":"\u5907\u7528\u6e90","Paste your embed code below:":"\u8bf7\u5c06\u5d4c\u5165\u4ee3\u7801\u8d34\u5165\u4e0b\u65b9\uff1a","Insert video":"\u63d2\u5165\u89c6\u9891","Embed":"\u5d4c\u5165","Special character":"\u7279\u6b8a\u5b57\u7b26","Right to left":"\u4ece\u53f3\u5230\u5de6","Left to right":"\u4ece\u5de6\u5230\u53f3","Emoticons":"\u8868\u60c5\u7b26\u53f7","Nonbreaking space":"\u4e0d\u95f4\u65ad\u7a7a\u683c","Page break":"\u5206\u9875\u7b26","Paste as text":"\u7c98\u8d34\u4e3a\u6587\u672c","Preview":"\u9884\u89c8","Print":"\u6253\u5370","Save":"\u4fdd\u5b58","Fullscreen":"\u5168\u5c4f","Horizontal line":"\u6c34\u5e73\u7ebf","Horizontal space":"\u6c34\u5e73\u95f4\u9694","Restore last draft":"\u6062\u590d\u4e0a\u4e00\u8349\u7a3f","Insert\/edit link":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","Remove link":"\u79fb\u9664\u94fe\u63a5","Could not find the specified string.":"\u65e0\u6cd5\u627e\u5230\u6307\u5b9a\u7684\u5b57\u7b26\u4e32\u3002","Replace":"\u66ff\u6362","Next":"\u4e0b\u4e00\u4e2a","Prev":"\u4e0a\u4e00\u4e2a","Whole words":"\u5339\u914d\u6574\u8bcd","Find and replace":"\u67e5\u627e\u548c\u66ff\u6362","Replace with":"\u66ff\u6362\u4e3a","Find":"\u67e5\u627e","Replace all":"\u5168\u90e8\u66ff\u6362","Match case":"\u5339\u914d\u5927\u5c0f\u5199","Spellcheck":"\u62fc\u5199\u68c0\u67e5","Finish":"\u5b8c\u6210","Ignore all":"\u5168\u90e8\u5ffd\u7565","Ignore":"\u5ffd\u7565","Insert table":"\u63d2\u5165\u8868\u683c","Delete table":"\u5220\u9664\u8868\u683c","Table properties":"\u8868\u683c\u5c5e\u6027","Row properties":"\u8868\u683c\u884c\u5c5e\u6027","Cell properties":"\u5355\u5143\u683c\u5c5e\u6027","Row":"\u884c","Rows":"\u884c","Column":"\u5217","Cols":"\u5217","Cell":"\u5355\u5143\u683c","Header cell":"\u8868\u5934\u5355\u5143\u683c","Header":"\u8868\u5934","Body":"\u4e3b\u4f53","Footer":"\u6ce8\u811a","Insert row before":"\u5728\u4e0a\u65b9\u63d2\u5165\u884c","Insert row after":"\u5728\u4e0b\u65b9\u63d2\u5165\u884c","Insert column before":"\u5728\u524d\u65b9\u63d2\u5165\u5217","Insert column after":"\u5728\u540e\u65b9\u63d2\u5165\u5217","Paste row before":"\u5728\u4e0a\u65b9\u7c98\u8d34\u8868\u683c\u884c","Paste row after":"\u5728\u4e0b\u65b9\u7c98\u8d34\u8868\u683c\u884c","Delete row":"\u5220\u9664\u884c","Delete column":"\u5220\u9664\u5217","Cut row":"\u526a\u5207\u8be5\u884c","Copy row":"\u590d\u5236\u8be5\u884c","Merge cells":"\u5408\u5e76\u5355\u5143\u683c","Split cell":"\u62c6\u5206\u5355\u5143\u683c","Height":"\u9ad8\u5ea6","Width":"\u5bbd\u5ea6","Caption":"\u8bf4\u660e","Alignment":"\u5bf9\u9f50\u65b9\u5f0f","Left":"\u5de6","Center":"\u4e2d","Right":"\u53f3","None":"\u65e0","Row group":"\u884c\u7ec4","Column group":"\u5217\u7ec4","Row type":"\u884c\u7c7b\u578b","Cell type":"\u5355\u5143\u683c\u7c7b\u578b","Cell padding":"\u5355\u5143\u683c\u5185\u8fb9\u8ddd","Cell spacing":"\u5355\u5143\u683c\u95f4\u8ddd","Scope":"\u8303\u56f4","Insert template":"\u63d2\u5165\u6a21\u677f","Templates":"\u6a21\u677f","Background color":"\u80cc\u666f\u989c\u8272","Text color":"\u6587\u5b57\u989c\u8272","Show blocks":"\u663e\u793a\u5757","Show invisible characters":"\u663e\u793a\u4e0d\u53ef\u89c1\u5b57\u7b26","Words: {0}":"\u8bcd\u6570\uff1a{0}","Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off.":"\u5f53\u524d\u5904\u4e8e\u7eaf\u6587\u672c\u7c98\u8d34\u6a21\u5f0f\uff0c\u7c98\u8d34\u7684\u5185\u5bb9\u5c06\u88ab\u89c6\u4f5c\u7eaf\u6587\u672c\u3002\n\n\u5982\u679c\u60a8\u5e0c\u671b\u4eceMicrosoft Word\u7c98\u8d34\u5bcc\u6587\u672c\u5185\u5bb9\uff0c\u8bf7\u5c06\u6b64\u9009\u9879\u5173\u95ed\u3002\u7f16\u8f91\u5668\u5c06\u81ea\u52a8\u6e05\u7406\u4eceWord\u7c98\u8d34\u6765\u7684\u6587\u672c\u3002","Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help":"\u5bcc\u6587\u672c\u533a\u57df\u3002\u6309ALT-F9\u6253\u5f00\u83dc\u5355\uff0c\u6309ALT-F10\u5f00\u542f\u5de5\u5177\u680f\uff0c\u6309ALT-0\u4ee5\u83b7\u5f97\u5e2e\u52a9\u3002","You have unsaved changes are you sure you want to navigate away?":"\u79bb\u5f00\u8fd9\u4e2a\u9875\u9762\uff0c\u60a8\u6240\u505a\u7684\u66f4\u6539\u5c06\u4e22\u5931\u3002","Your browser doesn't support direct access to the clipboard. Please use the Ctrl+X\/C\/V keyboard shortcuts instead.":"\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u76f4\u63a5\u8bbf\u95ee\u526a\u8d34\u677f\uff0c\u8bf7\u4f7f\u7528\u952e\u76d8\u5feb\u6377\u952e\u6216\u6d4f\u89c8\u5668\u7684\u7f16\u8f91\u83dc\u5355\u3002","Insert":"\u63d2\u5165","File":"\u6587\u4ef6","Edit":"\u7f16\u8f91","Tools":"\u5de5\u5177","View":"\u67e5\u770b","Table":"\u8868\u683c","Format":"\u683c\u5f0f","Keyboard Shortcuts":"\u952e\u76d8\u5feb\u6377\u952e","Toolbar Toggle":"\u663e\u793a\/\u9690\u85cf\u5de5\u5177\u680f","Insert Read More tag":"\u63d2\u5165\u201cMore\u201d\u6807\u7b7e","Read more...":"\u9605\u8bfb\u66f4\u591a\u2026","Distraction Free Writing":"\u5168\u5c4f\u5199\u4f5c\u6a21\u5f0f"});
-tinymce.ScriptLoader.markDone( 'http://localhost/wordpress/wp-includes/js/tinymce/langs/zh.js' );
-</script>
-		<script type="text/javascript">
-		
-		( function() {
-			var init, edId, qtId, firstInit, wrapper;
-
-			if ( typeof tinymce !== 'undefined' ) {
-				for ( edId in tinyMCEPreInit.mceInit ) {
-					if ( firstInit ) {
-						init = tinyMCEPreInit.mceInit[edId] = tinymce.extend( {}, firstInit, tinyMCEPreInit.mceInit[edId] );
-					} else {
-						init = firstInit = tinyMCEPreInit.mceInit[edId];
-					}
-
-					wrapper = tinymce.DOM.select( '#wp-' + edId + '-wrap' )[0];
-
-					if ( ( tinymce.DOM.hasClass( wrapper, 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( edId ) ) &&
-						! init.wp_skip_init ) {
-
-						try {
-							tinymce.init( init );
-
-							if ( ! window.wpActiveEditor ) {
-								window.wpActiveEditor = edId;
-							}
-						} catch(e){}
-					}
-				}
-			}
-
-			if ( typeof quicktags !== 'undefined' ) {
-				for ( qtId in tinyMCEPreInit.qtInit ) {
-					try {
-						quicktags( tinyMCEPreInit.qtInit[qtId] );
-
-						if ( ! window.wpActiveEditor ) {
-							window.wpActiveEditor = qtId;
-						}
-					} catch(e){};
-				}
-			}
-
-			if ( typeof jQuery !== 'undefined' ) {
-				jQuery('.wp-editor-wrap').on( 'click.wp-editor', function() {
-					if ( this.id ) {
-						window.wpActiveEditor = this.id.slice( 3, -5 );
-					}
-				});
-			} else {
-				for ( qtId in tinyMCEPreInit.qtInit ) {
-					document.getElementById( 'wp-' + qtId + '-wrap' ).onclick = function() {
-						window.wpActiveEditor = this.id.slice( 3, -5 );
-					}
-				}
-			}
-		}());
-		</script>
-				<div id="wp-link-backdrop" style="display: none"></div>
+            <div id="wp-link-backdrop" style="display: none"></div>
 		<div id="wp-link-wrap" class="wp-core-ui" style="display: none">
 		<form id="wp-link" tabindex="-1">
 		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="e831f8160d" />		<div id="link-modal-title">

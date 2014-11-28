@@ -232,88 +232,21 @@
 <div class="clear"></div></div><!-- wpbody-content -->
 <div class="clear"></div>
 
-<script type='text/javascript'>list_args = {"class":"WP_Comments_List_Table","screen":{"id":"edit-comments","base":"edit-comments"}};</script>
-<script type='text/javascript'>list_args = {"class":"WP_Comments_List_Table","screen":{"id":"edit-comments","base":"edit-comments"}};</script>
+
 
 	
-<script type='text/javascript'>
-/* <![CDATA[ */
-var commonL10n = {"warnDelete":"\u60a8\u5c06\u6c38\u4e45\u5220\u9664\u6240\u9009\u9879\u76ee\u3002\n\u70b9\u51fb\u201c\u53d6\u6d88\u201d\u505c\u6b62\uff0c\u70b9\u51fb\u201c\u786e\u5b9a\u201d\u5220\u9664\u3002"};var wpAjax = {"noPerm":"\u60a8\u65e0\u6743\u6267\u884c\u6b64\u64cd\u4f5c\u3002","broken":"\u53d1\u751f\u4e86\u65e0\u6cd5\u8bc6\u522b\u7684\u9519\u8bef\u3002"};var quicktagsL10n = {"closeAllOpenTags":"\u5173\u95ed\u6240\u6709\u6253\u5f00\u7684\u6807\u7b7e","closeTags":"\u5173\u95ed\u6807\u7b7e","enterURL":"\u8f93\u5165URL","enterImageURL":"\u8f93\u5165\u56fe\u50cfURL","enterImageDescription":"\u4e3a\u56fe\u50cf\u8f93\u5165\u63cf\u8ff0","fullscreen":"\u5168\u5c4f","toggleFullscreen":"\u5207\u6362\u5168\u5c4f\u6a21\u5f0f","textdirection":"\u6587\u672c\u65b9\u5411","toggleTextdirection":"\u5207\u6362\u7f16\u8f91\u5668\u6587\u672c\u4e66\u5199\u65b9\u5411"};var adminCommentsL10n = {"hotkeys_highlight_first":"","hotkeys_highlight_last":"","replyApprove":"\u6279\u51c6\u5e76\u56de\u590d","reply":"\u56de\u590d"};var heartbeatSettings = {"nonce":"c63b35be06"};var authcheckL10n = {"beforeunload":"\u60a8\u7684\u767b\u5f55\u4f1a\u8bdd\u5df2\u8fc7\u671f\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u3002","interval":"180"};var wpLinkL10n = {"title":"\u63d2\u5165\u6216\u7f16\u8f91\u94fe\u63a5","update":"\u66f4\u65b0","save":"\u6dfb\u52a0\u94fe\u63a5","noTitle":"(\u65e0\u6807\u9898)","noMatchesFound":"\u627e\u4e0d\u5230\u7b26\u5408\u6761\u4ef6\u7684\u9879\u76ee\u3002"};/* ]]> */
-</script>
-<script type='text/javascript' src='http://localhost/wordpress/wp-admin/load-scripts.php?c=1&amp;load%5B%5D=hoverIntent,common,admin-bar,wp-ajax-response,jquery-color,wp-lists,quicktags,jquery-query,admin-comments,svg-painter,heartbeat,&amp;load%5B%5D=wp-auth-check,wplink&amp;ver=4.0'></script>
-<script type='text/javascript' src='http://localhost/wordpress/wp-content/languages/zh_CN-word-count.js?ver=20120605'></script>
 
-		<script type="text/javascript">
-		tinyMCEPreInit = {
-			baseURL: "",
-			suffix: ".min",
-						mceInit: {},
-			qtInit: {'replycontent':{id:"replycontent",buttons:"strong,em,link,block,del,ins,img,ul,ol,li,code,close"}},
-			ref: {plugins:"",theme:"modern",language:""},
-			load_ext: function(url,lang){var sl=tinymce.ScriptLoader;sl.markDone(url+'/langs/'+lang+'.js');sl.markDone(url+'/langs/'+lang+'_dlg.js');}
-		};
-		</script>
-				<script type="text/javascript">
-		
-		( function() {
-			var init, edId, qtId, firstInit, wrapper;
 
-			if ( typeof tinymce !== 'undefined' ) {
-				for ( edId in tinyMCEPreInit.mceInit ) {
-					if ( firstInit ) {
-						init = tinyMCEPreInit.mceInit[edId] = tinymce.extend( {}, firstInit, tinyMCEPreInit.mceInit[edId] );
-					} else {
-						init = firstInit = tinyMCEPreInit.mceInit[edId];
-					}
 
-					wrapper = tinymce.DOM.select( '#wp-' + edId + '-wrap' )[0];
 
-					if ( ( tinymce.DOM.hasClass( wrapper, 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( edId ) ) &&
-						! init.wp_skip_init ) {
-
-						try {
-							tinymce.init( init );
-
-							if ( ! window.wpActiveEditor ) {
-								window.wpActiveEditor = edId;
-							}
-						} catch(e){}
-					}
-				}
-			}
-
-			if ( typeof quicktags !== 'undefined' ) {
-				for ( qtId in tinyMCEPreInit.qtInit ) {
-					try {
-						quicktags( tinyMCEPreInit.qtInit[qtId] );
-
-						if ( ! window.wpActiveEditor ) {
-							window.wpActiveEditor = qtId;
-						}
-					} catch(e){};
-				}
-			}
-
-			if ( typeof jQuery !== 'undefined' ) {
-				jQuery('.wp-editor-wrap').on( 'click.wp-editor', function() {
-					if ( this.id ) {
-						window.wpActiveEditor = this.id.slice( 3, -5 );
-					}
-				});
-			} else {
-				for ( qtId in tinyMCEPreInit.qtInit ) {
-					document.getElementById( 'wp-' + qtId + '-wrap' ).onclick = function() {
-						window.wpActiveEditor = this.id.slice( 3, -5 );
-					}
-				}
-			}
-		}());
-		</script>
-				<div id="wp-link-backdrop" style="display: none"></div>
+				
+		<div id="wp-link-backdrop" style="display: none"></div>
 		<div id="wp-link-wrap" class="wp-core-ui" style="display: none">
 		<form id="wp-link" tabindex="-1">
-		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="e831f8160d" />		<div id="link-modal-title">
-			插入或编辑链接			<button type="button" id="wp-link-close"><span class="screen-reader-text">关闭</span></button>
+		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="e831f8160d" />		
+                <div id="link-modal-title">
+			插入或编辑链接			
+                        <button type="button" id="wp-link-close"><span class="screen-reader-text">关闭</span></button>
 	 	</div>
 		<div id="link-selector">
 			<div id="link-options">

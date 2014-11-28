@@ -8,28 +8,45 @@
              * @brief 列表-文章
              */
             public function index(){
-                
-                 $articleData = $this->model->getAll();
+                 
+                 $page = isset($_GET['page'])?$_GET['page']:1;
+                 $pageSize = 20;
+                 $where = "post_type='post'";
+                 
+                 $categoryModel = $this->model('category','admin');
+                 $categoryData = $categoryModel->getAll();
+
+                 $treeData = $categoryModel->getTree($categoryData['category']);
+                 
                  $timeData = array();
                  $timeArr = $this->model->getTime();
-                 $categoryModel = $this->model('category','admin');
-                 $categoryArr = $categoryModel->getAll();
-                 $categoryData = array();
-                 
                  foreach($timeArr as $time){
                       $timeData[$time['year'].$time['month']] = $time['year'].'年'.$time['month'].'月'; 
                  }
                  
-                 foreach($categoryArr as $category){
-                     $categoryData[$category['term_id']] = $category['name'];
-                 }
-                       
-                 $data = array(
-                             'articleData'=>$articleData,
+                 $articleData = $this->model->fields('post.*,relation.term_taxonomy_id')->join(' as post LEFT JOIN blog_term_relationships as relation ON post.ID = relation.object_id')->where($where)->limit(($page-1)*$pageSize,$pageSize)->order('post_date desc')->getAll();
+
+                $finalData = array();
+              
+                foreach($articleData as $article){
+
+                    $finalData[$article['ID']]['post'] = $article;
+                    
+                    if(isset($categoryData['tag'][$article['term_taxonomy_id']])){
+                        $finalData[$article['ID']]['tag'][] = $categoryData['tag'][$article['term_taxonomy_id']];
+                    }
+                    
+                    if(isset($categoryData['category'][$article['term_taxonomy_id']])){
+                        $finalData[$article['ID']]['cat'] = $categoryData['category'][$article['term_taxonomy_id']];
+                    }
+                }
+                
+                $data = array(
+                             'articleData'=>$finalData,
                              'timeData'=> $timeData,
-                             'categoryData'=>$categoryData
-                         );
-                 $this->render($data);
+                             'treeData'=>$treeData
+                        );
+                $this->render($data);
             }
             
             /*
@@ -44,8 +61,23 @@
              * @brief 添加-文章
              */
             public function add(){
-
+                
+                if(isset($_POST['doAdd'])){
+                    $term_id = empty($_POST['term_id'])?1:$_POST['term_id'];
+                    $insertData = array(
+                        'post_title'=>$_POST['post_title'],
+                        'post_content'=>$_POST['post_content'],
+                        'post_author'=>1,
+                        'post_date'=>date('Y-m-d H:i:s',time()),
+                        'post_status'=>'publish',
+                        'term_id'=>$term_id
+                    );  
+                    if(!$this->model()->add($insertData)){
+                        echo '插入失败';
+                    }
+                }
                 $this->render('','admin/article/edit');
+                
             }
             
             /**
@@ -53,7 +85,8 @@
              */
             public function recycle(){
                 
-                
+                  $post_id = $_GET['id'];
+                  
             }
             
             /*

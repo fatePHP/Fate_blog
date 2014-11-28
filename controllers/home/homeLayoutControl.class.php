@@ -13,7 +13,7 @@
                     
                     $this->setVal('articleRandom',$articleRandom);
                     $this->setVal('articleArchive',$articleArchive);
-                    $this->setVal('articleTags',$articleTags);
+                    $this->setVal('articleTags',$articleTags['all']);
             }
     }
 
