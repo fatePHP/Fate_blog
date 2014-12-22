@@ -2,7 +2,7 @@
         /*
          * @brief 前端控制器
          */
-        class homeControl extends homeLayoutControl{
+        class homeControl extends homeBaseControl{
             
                 /**
                  * @brief 首页-列表页

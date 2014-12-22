@@ -1,12 +1,13 @@
 <?php
 
-    class adminControl extends adminLayoutControl {
+    class adminControl extends adminBaseControl {
                                         
                 public function index(){
                     
                      $this->render();
                 }
                 
+    
     }
 
 ?>

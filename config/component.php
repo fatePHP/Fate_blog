@@ -34,7 +34,7 @@
        			),
        			
        	  'cookie'=>array(													
-       			'cookie_pre'=>'fate_',      //cookie前缀
+       			'prefix'=>'fate_',          //cookie前缀
        			),
           'url'=>array(
                           'format'=>'pathinfo',
